@@ -9,8 +9,7 @@
 # Tagline
 Doom but you only have one gun because we’re college students.
 
-# Mechanics
-## Minimum Viable Product
+# Minimum Viable Product
 ### Movement
 - [ ] Walking on a flat plane
 - [ ] Can look left to right
