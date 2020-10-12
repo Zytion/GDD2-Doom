@@ -38,6 +38,7 @@ void Application::InitVariables(void)
 	//set the model matrix and visibility of the last entity added
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(-2.0f,-1.0f,-1.0f)));
 	m_pEntityMngr->SetAxisVisibility(true);
+	ShowCursor(false);
 }
 void Application::Update(void)
 {

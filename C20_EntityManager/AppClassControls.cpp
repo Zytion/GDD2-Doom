@@ -346,8 +346,8 @@ void Application::ArcBall(float a_fSensitivity)
 }
 void Application::CameraRotation(float a_fSpeed)
 {
-	if (m_bFPC == false)
-		return;
+	//if (m_bFPC == false)
+	//	return;
 
 	UINT	MouseX, MouseY;		// Coordinates for the mouse
 	UINT	CenterX, CenterY;	// Coordinates for the center of the screen.
@@ -407,14 +407,19 @@ void Application::ProcessKeyboard(void)
 
 	float fMultiplier = 1.0f;
 
-	if (bMultiplier)
-		fMultiplier = 5.0f;
+	//if (bMultiplier)
+	//	fMultiplier = 5.0f;
 
+	vector3 forward = m_pCameraMngr->GetForward();
+	vector3 forwardProj = glm::normalize(forward - glm::proj(forward, vector3(0.0f, 1.0f, 0.0f)));
+	m_pCameraMngr->SetForward(forwardProj);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 		m_pCameraMngr->MoveForward(m_fMovementSpeed * fMultiplier);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 		m_pCameraMngr->MoveForward(-m_fMovementSpeed * fMultiplier);
+
+	m_pCameraMngr->SetForward(forward);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 		m_pCameraMngr->MoveSideways(-m_fMovementSpeed * fMultiplier);
