@@ -95,48 +95,48 @@ void Application::ProcessKeyReleased(sf::Event a_event)
 	case sf::Keyboard::Escape:
 		m_bRunning = false;
 		break;
-	case sf::Keyboard::F1:
-		m_pCameraMngr->SetCameraMode(CAM_PERSP);
-		break;
-	case sf::Keyboard::F2:
-		m_pCameraMngr->SetCameraMode(CAM_ORTHO_Z);
-		break;
-	case sf::Keyboard::F3:
-		m_pCameraMngr->SetCameraMode(CAM_ORTHO_Y);
-		break;
-	case sf::Keyboard::F4:
-		m_pCameraMngr->SetCameraMode(CAM_ORTHO_X);
-		break;
-	case sf::Keyboard::F:
-		bFPSControl = !bFPSControl;
-		m_pCameraMngr->SetFPS(bFPSControl);
-		break;
-	case sf::Keyboard::Add:
-		++m_uActCont;
-		m_uActCont %= 8;
-		if (m_uControllerCount > 0)
-		{
-			while (m_pController[m_uActCont]->uModel == SimplexController_NONE)
-			{
-				++m_uActCont;
-				m_uActCont %= 8;
-			}
-		}
-		break;
-	case sf::Keyboard::Subtract:
-		--m_uActCont;
-		if (m_uActCont > 7)
-			m_uActCont = 7;
-		if (m_uControllerCount > 0)
-		{
-			while (m_pController[m_uActCont]->uModel == SimplexController_NONE)
-			{
-				--m_uActCont;
-				if (m_uActCont > 7)
-					m_uActCont = 7;
-			}
-		}
-		break;
+	//case sf::Keyboard::F1:
+	//	m_pCameraMngr->SetCameraMode(CAM_PERSP);
+	//	break;
+	//case sf::Keyboard::F2:
+	//	m_pCameraMngr->SetCameraMode(CAM_ORTHO_Z);
+	//	break;
+	//case sf::Keyboard::F3:
+	//	m_pCameraMngr->SetCameraMode(CAM_ORTHO_Y);
+	//	break;
+	//case sf::Keyboard::F4:
+	//	m_pCameraMngr->SetCameraMode(CAM_ORTHO_X);
+	//	break;
+	//case sf::Keyboard::F:
+	//	bFPSControl = !bFPSControl;
+	//	m_pCameraMngr->SetFPS(bFPSControl);
+	//	break;
+	//case sf::Keyboard::Add:
+	//	++m_uActCont;
+	//	m_uActCont %= 8;
+	//	if (m_uControllerCount > 0)
+	//	{
+	//		while (m_pController[m_uActCont]->uModel == SimplexController_NONE)
+	//		{
+	//			++m_uActCont;
+	//			m_uActCont %= 8;
+	//		}
+	//	}
+	//	break;
+	//case sf::Keyboard::Subtract:
+	//	--m_uActCont;
+	//	if (m_uActCont > 7)
+	//		m_uActCont = 7;
+	//	if (m_uControllerCount > 0)
+	//	{
+	//		while (m_pController[m_uActCont]->uModel == SimplexController_NONE)
+	//		{
+	//			--m_uActCont;
+	//			if (m_uActCont > 7)
+	//				m_uActCont = 7;
+	//		}
+	//	}
+	//	break;
 	case sf::Keyboard::LShift:
 	case sf::Keyboard::RShift:
 		m_bModifier = false;
@@ -434,54 +434,54 @@ void Application::ProcessKeyboard(void)
 		m_pCameraMngr->MoveVertical(m_fMovementSpeed * fMultiplier);
 #pragma endregion
 	//move the creeper
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-		m_v3Creeper.x -= 0.1f;
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	//	m_v3Creeper.x -= 0.1f;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		m_v3Creeper.x += 0.1f;
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	//	m_v3Creeper.x += 0.1f;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-	{
-		if (m_bModifier)
-			m_v3Creeper.z -= 0.1f;
-		else
-			m_v3Creeper.y += 0.1f;
-	}
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	//{
+	//	if (m_bModifier)
+	//		m_v3Creeper.z -= 0.1f;
+	//	else
+	//		m_v3Creeper.y += 0.1f;
+	//}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-	{
-		if (m_bModifier)
-			m_v3Creeper.z += 0.1f;
-		else
-			m_v3Creeper.y -= 0.1f;
-	}
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	//{
+	//	if (m_bModifier)
+	//		m_v3Creeper.z += 0.1f;
+	//	else
+	//		m_v3Creeper.y -= 0.1f;
+	//}
 
 	//Orient the creeper
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
-	{
-		if (m_bModifier)
-			m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(1.0f), AXIS_X);
-		else
-			m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(-1.0f), AXIS_X);
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y))
-	{
-		if (m_bModifier)
-			m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(1.0f), AXIS_Y);
-		else
-			m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(-1.0f), AXIS_Y);
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
-	{
-		if (m_bModifier)
-			m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(1.0f), AXIS_Z);
-		else
-			m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(-1.0f), AXIS_Z);
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
-	{
-		m_qCreeper = quaternion();
-	}
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
+	//{
+	//	if (m_bModifier)
+	//		m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(1.0f), AXIS_X);
+	//	else
+	//		m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(-1.0f), AXIS_X);
+	//}
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y))
+	//{
+	//	if (m_bModifier)
+	//		m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(1.0f), AXIS_Y);
+	//	else
+	//		m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(-1.0f), AXIS_Y);
+	//}
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+	//{
+	//	if (m_bModifier)
+	//		m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(1.0f), AXIS_Z);
+	//	else
+	//		m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(-1.0f), AXIS_Z);
+	//}
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+	//{
+	//	m_qCreeper = quaternion();
+	//}
 }
 //Joystick
 void Application::ProcessJoystick(void)
