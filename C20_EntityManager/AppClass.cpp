@@ -71,7 +71,6 @@ void Application::InitVariables(void)
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(-2.0f,-1.0f,-1.0f)));
 	m_pEntityMngr->SetAxisVisibility(true);
 
-
 	ShowCursor(false);
 }
 void Application::Update(void)

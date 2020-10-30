@@ -19,6 +19,7 @@ class MyEntity
 
 	Model* m_pModel = nullptr; //Model associated with this Entity
 	RigidBody* m_pRigidBody = nullptr; //Rigid Body associated with this Entity
+	vector3 m_v3Velocity = ZERO_V3; //vector for movement
 
 	matrix4 m_m4ToWorld = IDENTITY_M4; //Model matrix associated with this Entity
 	MeshManager* m_pMeshMngr = nullptr; //For rendering shapes
@@ -88,6 +89,12 @@ public:
 	OUTPUT: initialized?
 	*/
 	bool IsInitialized(void);
+	/*
+	Usage: Apply movement based on velocity vector
+	Arguments: ---
+	Output: ---
+	*/
+	void ApplyMovement();
 	/*
 	USAGE: Adds the entity to the render list
 	ARGUMENTS: ---

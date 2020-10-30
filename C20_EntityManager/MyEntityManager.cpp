@@ -1,4 +1,5 @@
 #include "MyEntityManager.h"
+using namespace std;
 using namespace Simplex;
 //  MyEntityManager
 MyEntityManager* MyEntityManager::m_pInstance = nullptr;
@@ -166,9 +167,11 @@ MyEntityManager::~MyEntityManager(){Release();};
 // other methods
 void Simplex::MyEntityManager::Update(void)
 {
+	
 	//check collisions
 	for (uint i = 0; i < m_uEntityCount - 1; i++)
 	{
+		m_entityList[i]->ApplyMovement();
 		for (uint j = i + 1; j < m_uEntityCount; j++)
 		{
 			m_entityList[i]->IsColliding(m_entityList[j]);
