@@ -14,6 +14,7 @@ void Application::InitVariables(void)
 	m_pEntityMngr = MyEntityManager::GetInstance();
 	
 	//creeper
+	/*
 	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Creeper");
 	m_pEntityMngr->SetAxisVisibility(true, "Creeper"); //set visibility of the entity's axis
 
@@ -32,6 +33,7 @@ void Application::InitVariables(void)
 	//set the model matrix and visibility of the last entity added
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(0.0f, -2.5f, 0.0f)));
 	m_pEntityMngr->SetAxisVisibility(true);
+	*/
 
 	//OUTSIDE WALLS AND FLOORS
 	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Floor");
@@ -65,11 +67,13 @@ void Application::InitVariables(void)
 	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall12");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(23.0f, -5.0f, 80.0f)) * glm::scale(vector3(16.0f, 7.5f, 2.0f)));
 
+	/*
 	//add an entity
 	m_pEntityMngr->AddEntity("Minecraft\\Pig.obj", "Pig");
 	//set the model matrix and visibility of the last entity added
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(-2.0f,-1.0f,-1.0f)));
 	m_pEntityMngr->SetAxisVisibility(true);
+	*/
 
 	ShowCursor(false);
 }
@@ -84,6 +88,7 @@ void Application::Update(void)
 	//Is the first person camera active?
 	CameraRotation();
 	
+	/*
 	//Set model matrix to the creeper
 	matrix4 mCreeper = glm::translate(m_v3Creeper) * ToMatrix4(m_qCreeper) * ToMatrix4(m_qArcBall);
 	m_pEntityMngr->SetModelMatrix(mCreeper, "Creeper");
@@ -98,6 +103,8 @@ void Application::Update(void)
 	matrix4 lastMatrix = m_pEntityMngr->GetModelMatrix();// get the model matrix of the last added
 	lastMatrix *= glm::translate(IDENTITY_M4, vector3(0.01f, 0.0f, 0.0f)); //translate it
 	m_pEntityMngr->SetModelMatrix(lastMatrix); //return it to its owner
+
+	*/
 
 	//Update Entity Manager
 	m_pEntityMngr->Update();
