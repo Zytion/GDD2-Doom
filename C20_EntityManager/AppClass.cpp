@@ -4,7 +4,7 @@ void Application::InitVariables(void)
 {
 	//Set the position and target of the camera
 	m_pCameraMngr->SetPositionTargetAndUp(
-		vector3(0.0f, 0.0f, 13.0f), //Position
+		vector3(3.0f, 0.0f, 15.0f), //Position
 		vector3(0.0f, 0.0f, 12.0f),	//Target
 		AXIS_Y);					//Up
 
@@ -33,7 +33,7 @@ void Application::InitVariables(void)
 	//set the model matrix and visibility of the last entity added
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(0.0f, -2.5f, 0.0f)));
 	m_pEntityMngr->SetAxisVisibility(true);
-	*/
+	*/		
 
 	//OUTSIDE WALLS AND FLOORS
 	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Floor");

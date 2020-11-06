@@ -167,11 +167,12 @@ MyEntityManager::~MyEntityManager(){Release();};
 // other methods
 void Simplex::MyEntityManager::Update(void)
 {
-	
 	//check collisions
 	for (uint i = 0; i < m_uEntityCount - 1; i++)
 	{
+		//the player has applied movement
 		m_entityList[i]->ApplyMovement();
+
 		for (uint j = i + 1; j < m_uEntityCount; j++)
 		{
 			m_entityList[i]->IsColliding(m_entityList[j]);
