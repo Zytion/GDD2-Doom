@@ -432,6 +432,13 @@ void Application::ProcessKeyboard(void)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
 		m_pCameraMngr->MoveVertical(m_fMovementSpeed * fMultiplier);
+	
+	vector3 pos = m_pCameraMngr->GetPosition();
+	pos = vector3(pos.x, 0, pos.z);
+	vector3 size = vector3(2.0f, 5.0f, 2.0f);
+	pos -= size / 2;
+
+	m_pEntityMngr->SetModelMatrix(glm::translate(pos) * glm::scale(size), "Player");
 #pragma endregion
 	//move the creeper
 	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))

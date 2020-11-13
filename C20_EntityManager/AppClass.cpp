@@ -67,6 +67,9 @@ void Application::InitVariables(void)
 	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall12");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(23.0f, -5.0f, 80.0f)) * glm::scale(vector3(16.0f, 7.5f, 2.0f)));
 
+	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Player");
+	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(0, 0, 0)) * glm::scale(vector3(3.0f, 6.0f, 3.0f)), "Player");
+
 	/*
 	//add an entity
 	m_pEntityMngr->AddEntity("Minecraft\\Pig.obj", "Pig");
