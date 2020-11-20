@@ -438,6 +438,8 @@ void Application::ProcessKeyboard(void)
 	vector3 size = vector3(2.0f, 5.0f, 2.0f);
 	pos -= size / 2;
 
+	std::cout << pos.x << "," << pos.y << "," << pos.z << std::endl;
+
 	m_pEntityMngr->SetModelMatrix(glm::translate(pos) * glm::scale(size), "Player");
 #pragma endregion
 	//move the creeper

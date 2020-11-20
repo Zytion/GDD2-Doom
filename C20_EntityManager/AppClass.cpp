@@ -35,9 +35,12 @@ void Application::InitVariables(void)
 	m_pEntityMngr->SetAxisVisibility(true);
 	*/		
 
+	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Player");
+	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(0, 0, 0)) * glm::scale(vector3(3.0f, 6.0f, 3.0f)), "Player");
+
 	//OUTSIDE WALLS AND FLOORS
 	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Floor");
-	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(0.0f, -5.0f, 0.0f)) * glm::scale(vector3(140.0f, 1.0f, 100.0f)));
+	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(0.0f, -5.25f, 0.0f)) * glm::scale(vector3(140.0f, 1.0f, 100.0f)));
 	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall1");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(0.0f, -5.0f, 0.0f)) * glm::scale(vector3(140.0f, 10.0f, 1.0f)));
 	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall2");
@@ -67,8 +70,6 @@ void Application::InitVariables(void)
 	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall12");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(23.0f, -5.0f, 80.0f)) * glm::scale(vector3(16.0f, 7.5f, 2.0f)));
 
-	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Player");
-	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(0, 0, 0)) * glm::scale(vector3(3.0f, 6.0f, 3.0f)), "Player");
 
 	/*
 	//add an entity

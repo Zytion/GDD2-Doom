@@ -69,7 +69,7 @@ Model* Simplex::MyEntityManager::GetModel(String a_sUniqueID)
 	}
 	return nullptr;
 }
-RigidBody* Simplex::MyEntityManager::GetRigidBody(uint a_uIndex)
+MyRigidBody* Simplex::MyEntityManager::GetRigidBody(uint a_uIndex)
 {
 	//if the list is empty return blank
 	if (m_entityList.size() == 0)
@@ -81,7 +81,7 @@ RigidBody* Simplex::MyEntityManager::GetRigidBody(uint a_uIndex)
 
 	return m_entityList[a_uIndex]->GetRigidBody();
 }
-RigidBody* Simplex::MyEntityManager::GetRigidBody(String a_sUniqueID)
+MyRigidBody* Simplex::MyEntityManager::GetRigidBody(String a_sUniqueID)
 {
 	//Get the entity
 	MyEntity* pTemp = MyEntity::GetEntity(a_sUniqueID);
@@ -170,14 +170,38 @@ void Simplex::MyEntityManager::Update(void)
 	//check collisions
 	for (uint i = 0; i < m_uEntityCount - 1; i++)
 	{
-		//the player has applied movement
-		m_entityList[i]->ApplyMovement();
-
 		for (uint j = i + 1; j < m_uEntityCount; j++)
 		{
-			m_entityList[i]->IsColliding(m_entityList[j]);
+			if (m_entityList[i]->IsColliding(m_entityList[j])) 
+			{
+				cout << m_entityList[i]->GetUniqueID() << endl;
+			}
 		}
 	}
+
+	/*
+	for (uint i = 0; i < m_uEntityCount; i++)
+	{
+		//apply player & entity movement
+		m_entityList[i]->ApplyMovement();
+	}
+
+	//collides with players
+	for (uint j = 2; j < m_uEntityCount; j++) 
+	{
+		if (m_entityList[0]->IsColliding(m_entityList[j])) 
+		{
+			cout << "Collided" << endl;
+
+			//CHECK WALLS
+			if (m_entityList[j]->GetUniqueID() == "Wall") 
+			{
+			}
+		}
+	}
+
+	*/
+	
 }
 void Simplex::MyEntityManager::AddEntity(String a_sFileName, String a_sUniqueID)
 {
