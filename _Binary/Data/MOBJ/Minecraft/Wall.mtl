@@ -1,0 +1,12 @@
+#
+#
+#
+
+newmtl Cube_Cube_Material Mesh_Material
+illum 1
+Ka 1.000000 1.000000 1.000000
+Kd 0.027710 0.004164 0.004251
+Ks 0.000000 0.000000 0.000000
+Ns 1.000000
+map_Kd wall.png
+
