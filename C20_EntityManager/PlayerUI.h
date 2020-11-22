@@ -6,7 +6,8 @@ class PlayerUI
 	// draws the ui
 public:
 	void DrawUI();
-
+	void SetHealth(int health);
+	int GetHealth();
 	// put all writing here for now
 private:
 	std::string title = "DOOM";

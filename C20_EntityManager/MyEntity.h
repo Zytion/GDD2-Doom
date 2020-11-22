@@ -7,6 +7,7 @@ Date: 2017/07
 
 #include "Simplex\Simplex.h"
 #include "MyRigidBody.h"
+#include "NPC.h"
 
 namespace Simplex
 {

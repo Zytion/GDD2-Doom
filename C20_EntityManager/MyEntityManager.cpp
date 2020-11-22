@@ -190,15 +190,11 @@ void Simplex::MyEntityManager::Update(void)
 			{
 				cout << "Player Collides with Enemy" << endl;
 			}
-			//CHECK IF AMMO PICK UP
-			else if (entityID[0] == 'A')
-			{
-				cout << "Ammo Pick Up" << endl;
-			}
 			//CHECK IF HEALTH PICK UP
 			else if (entityID[0] == 'H')
 			{
 				cout << "Health Pick Up" << endl;
+				
 			}
 		}
 	}
