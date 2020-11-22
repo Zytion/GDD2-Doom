@@ -168,28 +168,58 @@ MyEntityManager::~MyEntityManager(){Release();};
 void Simplex::MyEntityManager::Update(void)
 {
 	//check collisions
-	for (uint i = 1; i < m_uEntityCount - 1; i++)
+	for (uint i = 1; i < m_uEntityCount; i++)
 	{
 		if (m_entityList[0]->IsColliding(m_entityList[i])) 
 		{
+			//take entityID
+			string entityID = m_entityList[i]->GetUniqueID();
+
 			//CHECK FOR WALLS
-			if (m_entityList[i]->GetUniqueID()[0] = 'W') 
+			if (entityID[0] == 'W') 
 			{
-				m_entityList[0]->SetVelocity(vector3(0,0,0));
+				cout << "STOP MOVEMENT IN PROGRESS" << endl;
 			}
 			//CHECK FOR BULLETS
-			else if (m_entityList[i]->GetUniqueID()[0] = 'B') 
+			else if (entityID[0] == 'B') 
 			{
 				cout << "Bullet Hit" << endl;
 			}
 			//CHECK IF ENEMY HIT PLAYER
-			else if (m_entityList[i]->GetUniqueID()[0] = 'E') 
+			else if (entityID[0] == 'E')
 			{
 				cout << "Player Collides with Enemy" << endl;
+			}
+			//CHECK IF AMMO PICK UP
+			else if (entityID[0] == 'A')
+			{
+				cout << "Ammo Pick Up" << endl;
+			}
+			//CHECK IF HEALTH PICK UP
+			else if (entityID[0] == 'H')
+			{
+				cout << "Health Pick Up" << endl;
 			}
 		}
 	}
 	
+
+	for (uint i = 14; i < m_uEntityCount - 1; i++) 
+	{
+		for (uint j = i + 1; i < m_uEntityCount; j++) 
+		{
+			//CHECK FOR ENEMIES
+			if (m_entityList[i]->GetUniqueID()[0] == 'E')
+			{
+				//CHECK IF BULLET HIT
+				if (m_entityList[j]->GetUniqueID()[0] == 'B') 
+				{
+					cout << "Enemy Takes Damage" << endl;
+				}
+			}
+		}
+	}
+
 }
 void Simplex::MyEntityManager::AddEntity(String a_sFileName, String a_sUniqueID)
 {
