@@ -1,6 +1,6 @@
 #include "NPC.h"
 
-
+/*
 //GETTER AND SETTER FOR HEALTH
 int NPC::GetHealth() 
 {
@@ -10,3 +10,5 @@ void NPC::SetHealth(int newHealth)
 {
 	health = newHealth;
 }
+
+*/

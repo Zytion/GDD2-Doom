@@ -1,5 +1,6 @@
 #pragma once
 #include "MyEntity.h"
+/*
 class NPC : public MyEntity
 {
 public:
@@ -8,4 +9,6 @@ public:
 private:
 	int health = 100;
 };
+*/
+
 
