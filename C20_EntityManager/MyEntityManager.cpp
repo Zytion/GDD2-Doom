@@ -69,7 +69,7 @@ Model* Simplex::MyEntityManager::GetModel(String a_sUniqueID)
 	}
 	return nullptr;
 }
-RigidBody* Simplex::MyEntityManager::GetRigidBody(uint a_uIndex)
+MyRigidBody* Simplex::MyEntityManager::GetRigidBody(uint a_uIndex)
 {
 	//if the list is empty return blank
 	if (m_entityList.size() == 0)
@@ -81,7 +81,7 @@ RigidBody* Simplex::MyEntityManager::GetRigidBody(uint a_uIndex)
 
 	return m_entityList[a_uIndex]->GetRigidBody();
 }
-RigidBody* Simplex::MyEntityManager::GetRigidBody(String a_sUniqueID)
+MyRigidBody* Simplex::MyEntityManager::GetRigidBody(String a_sUniqueID)
 {
 	//Get the entity
 	MyEntity* pTemp = MyEntity::GetEntity(a_sUniqueID);
@@ -168,24 +168,57 @@ MyEntityManager::~MyEntityManager(){Release();};
 void Simplex::MyEntityManager::Update(void)
 {
 	//check collisions
-	for (uint i = 0; i < m_uEntityCount - 1; i++)
+	for (uint i = 1; i < m_uEntityCount; i++)
 	{
-		//the player has applied movement
-		m_entityList[i]->ApplyMovement();
-		for (uint j = i + 1; j < m_uEntityCount; j++)
+		if (m_entityList[0]->IsColliding(m_entityList[i])) 
 		{
-			m_entityList[i]->IsColliding(m_entityList[j]);
+			//take entityID
+			string entityID = m_entityList[i]->GetUniqueID();
+
+			//CHECK FOR WALLS
+			if (entityID[0] == 'W') 
+			{
+				cout << "STOP MOVEMENT IN PROGRESS" << endl;
+			}
+			//CHECK FOR BULLETS
+			else if (entityID[0] == 'B') 
+			{
+				cout << "Bullet Hit" << endl;
+			}
+			//CHECK IF ENEMY HIT PLAYER
+			else if (entityID[0] == 'E')
+			{
+				cout << "Player Collides with Enemy" << endl;
+			}
 		}
 	}
-	m_entityList[m_uEntityCount - 1]->ApplyMovement();
-}
-void Simplex::MyEntityManager::AddEntity(MyEntity* p)
-{
-	if (p->IsInitialized())
+	
+
+	for (uint i = 14; i < m_uEntityCount - 1; i++) 
 	{
-		m_entityList.push_back(p);
-		m_uEntityCount = m_entityList.size();
+		for (uint j = i + 1; i < m_uEntityCount; j++) 
+		{
+			//CHECK FOR ENEMIES
+			if (m_entityList[i]->GetUniqueID()[0] == 'E')
+			{
+				//CHECK IF BULLET HIT
+				if (m_entityList[j]->GetUniqueID()[0] == 'B') 
+				{
+					cout << "Enemy Takes Damage" << endl;
+				}
+			}
+			//CHECK FOR BULLET
+			else if (m_entityList[i]->GetUniqueID()[0] == 'B') 
+			{
+				//BULLET COLLIDED WITH WALL
+				if (m_entityList[j]->GetUniqueID()[0] == 'W') 
+				{
+				
+				}
+			}
+		}
 	}
+
 }
 void Simplex::MyEntityManager::AddEntity(String a_sFileName, String a_sUniqueID)
 {
