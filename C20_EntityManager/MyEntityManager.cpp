@@ -183,11 +183,13 @@ void Simplex::MyEntityManager::Update(void)
 			//CHECK FOR BULLETS
 			else if (entityID[0] == 'B') 
 			{
+				//END GAME!
 				cout << "Bullet Hit" << endl;
 			}
 			//CHECK IF ENEMY HIT PLAYER
 			else if (entityID[0] == 'E')
 			{
+				//END GAME!
 				cout << "Player Collides with Enemy" << endl;
 			}
 		}
@@ -204,6 +206,7 @@ void Simplex::MyEntityManager::Update(void)
 				//CHECK IF BULLET HIT
 				if (m_entityList[j]->GetUniqueID()[0] == 'B') 
 				{
+					//DESTROY ENEMY
 					cout << "Enemy Takes Damage" << endl;
 				}
 			}
@@ -213,7 +216,8 @@ void Simplex::MyEntityManager::Update(void)
 				//BULLET COLLIDED WITH WALL
 				if (m_entityList[j]->GetUniqueID()[0] == 'W') 
 				{
-				
+					//DESTROY BULLET
+					cout << "Bullet go BRRRRR" << endl;
 				}
 			}
 		}
