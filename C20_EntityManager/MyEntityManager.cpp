@@ -183,42 +183,56 @@ void Simplex::MyEntityManager::Update(void)
 			//CHECK FOR BULLETS
 			else if (entityID[0] == 'B') 
 			{
+				//END GAME!
 				cout << "Bullet Hit" << endl;
 			}
 			//CHECK IF ENEMY HIT PLAYER
 			else if (entityID[0] == 'E')
 			{
+				//END GAME!
 				cout << "Player Collides with Enemy" << endl;
 			}
 		}
 	}
 	
-
 	for (uint i = 14; i < m_uEntityCount - 1; i++) 
 	{
 		for (uint j = i + 1; i < m_uEntityCount; j++) 
 		{
-			//CHECK FOR ENEMIES
-			if (m_entityList[i]->GetUniqueID()[0] == 'E')
+			if (m_entityList[i]->IsColliding(m_entityList[j]))
 			{
-				//CHECK IF BULLET HIT
-				if (m_entityList[j]->GetUniqueID()[0] == 'B') 
+				//CHECK FOR ENEMIES
+				if (m_entityList[i]->GetUniqueID()[0] == 'E')
 				{
-					cout << "Enemy Takes Damage" << endl;
+					//CHECK IF BULLET HIT
+					if (m_entityList[j]->GetUniqueID()[0] == 'B')
+					{
+						//DESTROY ENEMY
+						cout << "Enemy Takes Damage" << endl;
+					}
 				}
-			}
-			//CHECK FOR BULLET
-			else if (m_entityList[i]->GetUniqueID()[0] == 'B') 
-			{
-				//BULLET COLLIDED WITH WALL
-				if (m_entityList[j]->GetUniqueID()[0] == 'W') 
+				//CHECK FOR BULLET
+				else if (m_entityList[i]->GetUniqueID()[0] == 'B')
 				{
-				
+					//BULLET COLLIDED WITH WALL
+					if (m_entityList[j]->GetUniqueID()[0] == 'W')
+					{
+						//DESTROY BULLET
+						cout << "Bullet go BRRRRR" << endl;
+					}
 				}
 			}
 		}
 	}
 
+}
+void Simplex::MyEntityManager::AddEntity(MyEntity* p)
+{
+	if (p->IsInitialized())
+	{
+		m_entityList.push_back(p);
+		m_uEntityCount = m_entityList.size();
+	}
 }
 void Simplex::MyEntityManager::AddEntity(String a_sFileName, String a_sUniqueID)
 {
