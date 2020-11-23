@@ -123,7 +123,7 @@ void Application::Display(void)
 	ClearScreen();
 	
 	// draw a skybox
-	m_pMeshMngr->AddSkyboxToRenderList();
+	m_pMeshMngr->AddSkyboxToRenderList("Skybox.png");
 	
 	//render list call
 	m_uRenderCallCount = m_pMeshMngr->Render();
