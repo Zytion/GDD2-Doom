@@ -190,12 +190,6 @@ void Simplex::MyEntityManager::Update(void)
 			{
 				cout << "Player Collides with Enemy" << endl;
 			}
-			//CHECK IF HEALTH PICK UP
-			else if (entityID[0] == 'H')
-			{
-				cout << "Health Pick Up" << endl;
-				
-			}
 		}
 	}
 	
@@ -211,6 +205,15 @@ void Simplex::MyEntityManager::Update(void)
 				if (m_entityList[j]->GetUniqueID()[0] == 'B') 
 				{
 					cout << "Enemy Takes Damage" << endl;
+				}
+			}
+			//CHECK FOR BULLET
+			else if (m_entityList[i]->GetUniqueID()[0] == 'B') 
+			{
+				//BULLET COLLIDED WITH WALL
+				if (m_entityList[j]->GetUniqueID()[0] == 'W') 
+				{
+				
 				}
 			}
 		}
