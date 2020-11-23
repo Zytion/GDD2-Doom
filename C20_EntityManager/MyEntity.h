@@ -141,8 +141,6 @@ public:
 	*/
 	void SetAxisVisible(bool a_bSetAxis = true);
 
-	void SetVelocity(vector3 velocity);
-
 private:
 	/*
 	Usage: Deallocates member fields

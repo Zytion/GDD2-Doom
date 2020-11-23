@@ -220,6 +220,14 @@ void Simplex::MyEntityManager::Update(void)
 	}
 
 }
+void Simplex::MyEntityManager::AddEntity(MyEntity* p)
+{
+	if (p->IsInitialized())
+	{
+		m_entityList.push_back(p);
+		m_uEntityCount = m_entityList.size();
+	}
+}
 void Simplex::MyEntityManager::AddEntity(String a_sFileName, String a_sUniqueID)
 {
 	//Create a temporal entity to store the object

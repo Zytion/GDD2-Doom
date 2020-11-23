@@ -405,7 +405,6 @@ void Application::ProcessMouseClick()
 		vector3 forward = m_pCameraMngr->GetForward();
 		vector3 position = m_pCameraMngr->GetPosition();
 
-
 		MyEntity* bullet = new MyEntity("Minecraft\\Cube.obj", "Bullet");
 		bullet->SetModelMatrix(glm::translate(position + forward) * glm::scale(vector3(0.2f)));
 		bullet->SetVelocity(5.0f * forward);
