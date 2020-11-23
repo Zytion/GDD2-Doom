@@ -73,6 +73,7 @@ public:
 	OUTPUT: ---
 	*/
 	void Update(void);
+	void AddEntity(MyEntity* p);
 	/*
 	USAGE: Gets the model associated with this entity
 	ARGUMENTS: uint a_uIndex = -1 -> index in the list of entities; if less than 0 it will add it to the last in the list

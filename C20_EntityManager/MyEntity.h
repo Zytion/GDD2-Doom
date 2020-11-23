@@ -118,6 +118,7 @@ public:
 	ARGUMENTS: String& a_sUniqueID -> desired name
 	OUTPUT: will output though the argument
 	*/
+
 	void GenUniqueID(String& a_sUniqueID);
 	/*
 	USAGE: Gets the Unique ID name of this model
@@ -131,6 +132,8 @@ public:
 	OUTPUT: ---
 	*/
 	void SetAxisVisible(bool a_bSetAxis = true);
+
+	void SetVelocity(vector3 velocity);
 
 private:
 	/*

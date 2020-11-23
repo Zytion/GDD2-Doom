@@ -93,6 +93,12 @@ void Simplex::MyEntity::ApplyMovement() {
 	m *= glm::translate(IDENTITY_M4, m_v3Velocity); //translate it
 	SetModelMatrix(m); //return it to its owner
 }
+
+void Simplex::MyEntity::SetVelocity(vector3 velocity)
+{
+	m_v3Velocity = velocity;
+}
+
 void Simplex::MyEntity::AddToRenderList(bool a_bDrawRigidBody)
 {
 	//if not in memory return

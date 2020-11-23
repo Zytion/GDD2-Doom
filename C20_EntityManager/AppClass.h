@@ -196,6 +196,7 @@ private:
 	OUTPUT: ---
 	*/
 	void CameraRotation(float a_fSpeed = 0.005f);
+	void ProcessMouseClick();
 #pragma endregion
 
 #pragma region Process Events

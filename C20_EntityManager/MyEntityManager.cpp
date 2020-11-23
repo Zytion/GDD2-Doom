@@ -172,11 +172,19 @@ void Simplex::MyEntityManager::Update(void)
 	{
 		//the player has applied movement
 		m_entityList[i]->ApplyMovement();
-
 		for (uint j = i + 1; j < m_uEntityCount; j++)
 		{
 			m_entityList[i]->IsColliding(m_entityList[j]);
 		}
+	}
+	m_entityList[m_uEntityCount - 1]->ApplyMovement();
+}
+void Simplex::MyEntityManager::AddEntity(MyEntity* p)
+{
+	if (p->IsInitialized())
+	{
+		m_entityList.push_back(p);
+		m_uEntityCount = m_entityList.size();
 	}
 }
 void Simplex::MyEntityManager::AddEntity(String a_sFileName, String a_sUniqueID)
