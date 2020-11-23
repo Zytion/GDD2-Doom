@@ -346,8 +346,8 @@ void Application::ArcBall(float a_fSensitivity)
 }
 void Application::CameraRotation(float a_fSpeed)
 {
-	//if (m_bFPC == false)
-	//	return;
+	if (!m_bFocused)
+		return;
 
 	UINT	MouseX, MouseY;		// Coordinates for the mouse
 	UINT	CenterX, CenterY;	// Coordinates for the center of the screen.
@@ -392,6 +392,26 @@ void Application::CameraRotation(float a_fSpeed)
 	m_pCameraMngr->ChangePitch(-fAngleX * 0.25f);
 	SetCursorPos(CenterX, CenterY);//Position the mouse in the center
 }
+
+void Application::ProcessMouseClick()
+{
+	//Get a timer
+	static float fTimer = 0;	//store the new timer
+	static uint uClock = m_pSystem->GenClock(); //generate a new clock for that timer
+	fTimer += m_pSystem->GetDeltaTime(uClock); //get the delta time for that timer
+	if (m_bFPC && fTimer >= 1.0f)
+	{
+		fTimer = 0;
+		vector3 forward = m_pCameraMngr->GetForward();
+		vector3 position = m_pCameraMngr->GetPosition();
+
+		MyEntity* bullet = new MyEntity("Minecraft\\Cube.obj", "Bullet");
+		bullet->SetModelMatrix(glm::translate(position + forward) * glm::scale(vector3(0.2f)));
+		bullet->SetVelocity(5.0f * forward);
+		m_pEntityMngr->AddEntity(bullet);
+	}
+}
+
 //Keyboard
 void Application::ProcessKeyboard(void)
 {
