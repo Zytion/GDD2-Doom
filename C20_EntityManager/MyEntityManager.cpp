@@ -195,12 +195,14 @@ void Simplex::MyEntityManager::Update(void)
 		}
 	}
 	
-	for (uint i = 14; i < m_uEntityCount - 1; i++) 
+	for (uint i = 14; i < m_uEntityCount; i++) 
 	{
-		for (uint j = i + 1; i < m_uEntityCount; j++) 
+		bool colliding = false;
+		for (uint j = i + 1; j < m_uEntityCount; j++) 
 		{
 			if (m_entityList[i]->IsColliding(m_entityList[j]))
 			{
+				colliding = true;
 				//CHECK FOR ENEMIES
 				if (m_entityList[i]->GetUniqueID()[0] == 'E')
 				{
@@ -222,6 +224,10 @@ void Simplex::MyEntityManager::Update(void)
 					}
 				}
 			}
+		}
+		if (!colliding)
+		{
+			m_entityList[i]->ApplyMovement();
 		}
 	}
 

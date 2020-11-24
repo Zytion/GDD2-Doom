@@ -123,12 +123,14 @@ void Application::Display(void)
 	static uint uClock = m_pSystem->GenClock(); //generate a new clock for that timer
 	fTimer += m_pSystem->GetDeltaTime(uClock); //get the delta time for that timer
 
+	//I am not running this right now, please fix before pushing
+	/*
 	for (uint i = 0; i < 1; i++)
 	{
 		MyEntity* enemy = m_enemies[i];
 		int index = enemy->m_destinationIndex;
 		vector3 dest = enemy->m_destinations[index];
-		vector3 pos = glm::lerp(enemy->GetModelMatrix(), dest, fTimer/6);
+		vector3 pos = glm::lerp(enemy->GetModelMatrix(), dest, fTimer/6);	//this is not how lerp function is called
 
 		if (glm::distance(pos, dest) < 1) {
 			cout << "changing order" << endl;
@@ -142,7 +144,7 @@ void Application::Display(void)
 		matrix4 m4Model = glm::translate(pos);
 		enemy->SetModelMatrix(m4Model);
 	}
-
+	*/
 	//clear the render list
 	m_pMeshMngr->ClearRenderList();
 	

@@ -399,7 +399,7 @@ void Application::ProcessMouseClick()
 	static float fTimer = 0;	//store the new timer
 	static uint uClock = m_pSystem->GenClock(); //generate a new clock for that timer
 	fTimer += m_pSystem->GetDeltaTime(uClock); //get the delta time for that timer
-	if (m_bFPC && fTimer >= 1.0f)
+	if (m_bFPC && fTimer >= 0.5f)
 	{
 		fTimer = 0;
 		vector3 forward = m_pCameraMngr->GetForward();
@@ -425,7 +425,7 @@ void Application::ProcessKeyboard(void)
 	bool bMultiplier = sf::Keyboard::isKeyPressed(sf::Keyboard::LShift) ||
 		sf::Keyboard::isKeyPressed(sf::Keyboard::RShift);
 
-	float fMultiplier = 1.0f;
+	float fMultiplier = 2.0f;
 
 	//if (bMultiplier)
 	//	fMultiplier = 5.0f;
@@ -447,11 +447,6 @@ void Application::ProcessKeyboard(void)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 		m_pCameraMngr->MoveSideways(m_fMovementSpeed * fMultiplier);
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-		m_pCameraMngr->MoveVertical(-m_fMovementSpeed * fMultiplier);
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
-		m_pCameraMngr->MoveVertical(m_fMovementSpeed * fMultiplier);
 	
 	vector3 pos = m_pCameraMngr->GetPosition();
 	pos = vector3(pos.x, 0, pos.z);
@@ -460,55 +455,6 @@ void Application::ProcessKeyboard(void)
 
 	m_pEntityMngr->SetModelMatrix(glm::translate(pos) * glm::scale(size), "Player");
 #pragma endregion
-	//move the creeper
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-	//	m_v3Creeper.x -= 0.1f;
-
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-	//	m_v3Creeper.x += 0.1f;
-
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-	//{
-	//	if (m_bModifier)
-	//		m_v3Creeper.z -= 0.1f;
-	//	else
-	//		m_v3Creeper.y += 0.1f;
-	//}
-
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-	//{
-	//	if (m_bModifier)
-	//		m_v3Creeper.z += 0.1f;
-	//	else
-	//		m_v3Creeper.y -= 0.1f;
-	//}
-
-	//Orient the creeper
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
-	//{
-	//	if (m_bModifier)
-	//		m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(1.0f), AXIS_X);
-	//	else
-	//		m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(-1.0f), AXIS_X);
-	//}
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y))
-	//{
-	//	if (m_bModifier)
-	//		m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(1.0f), AXIS_Y);
-	//	else
-	//		m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(-1.0f), AXIS_Y);
-	//}
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
-	//{
-	//	if (m_bModifier)
-	//		m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(1.0f), AXIS_Z);
-	//	else
-	//		m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(-1.0f), AXIS_Z);
-	//}
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
-	//{
-	//	m_qCreeper = quaternion();
-	//}
 }
 //Joystick
 void Application::ProcessJoystick(void)
