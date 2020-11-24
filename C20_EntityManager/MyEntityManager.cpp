@@ -205,16 +205,28 @@ void Simplex::MyEntityManager::Update(void)
 		m_entityList[0]->ApplyMovement();
 	}
 	
-	for (uint i = 14; i < m_uEntityCount; i++) 
+	for (uint i = 1; i < m_uEntityCount; i++) 
 	{
 		colliding = false;
 		for (uint j = i + 1; j < m_uEntityCount; j++) 
 		{
+			string ientityID = m_entityList[i]->GetUniqueID();
+			string jentityID = m_entityList[j]->GetUniqueID();
+
 			if (m_entityList[i]->IsColliding(m_entityList[j]))
 			{
 				colliding = true;
-				//CHECK FOR ENEMIES
-				if (m_entityList[i]->GetUniqueID()[0] == 'E')
+				//CHECK WALLS FOR BULLETS
+				if (ientityID[0] == 'W')
+				{
+					if (jentityID[0] == 'B')
+					{
+						RemoveEntity(j);
+						cout << "Bullet go BYEBYE" << endl;
+					}
+				}
+
+				else if (m_entityList[i]->GetUniqueID()[0] == 'E')
 				{
 					//CHECK IF BULLET HIT
 					if (m_entityList[j]->GetUniqueID()[0] == 'B')
@@ -224,17 +236,6 @@ void Simplex::MyEntityManager::Update(void)
 						//Destroy Bullet
 						RemoveEntity(j);
 						cout << "Enemy Dies" << endl;
-					}
-				}
-				//CHECK FOR BULLET
-				else if (m_entityList[i]->GetUniqueID()[0] == 'B')
-				{
-					//BULLET COLLIDED WITH WALL
-					if (m_entityList[j]->GetUniqueID()[0] == 'W')
-					{
-						//DESTROY BULLET
-						cout << "Bullet go byebye!" << endl;
-						RemoveEntity(i);
 					}
 				}
 			}
