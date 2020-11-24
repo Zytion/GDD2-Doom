@@ -197,7 +197,7 @@ void Simplex::MyEntityManager::Update(void)
 	
 	for (uint i = 14; i < m_uEntityCount - 1; i++) 
 	{
-		for (uint j = i + 1; i < m_uEntityCount; j++) 
+		for (uint j = i + 1; j < m_uEntityCount; j++) 
 		{
 			if (m_entityList[i]->IsColliding(m_entityList[j]))
 			{
@@ -208,7 +208,10 @@ void Simplex::MyEntityManager::Update(void)
 					if (m_entityList[j]->GetUniqueID()[0] == 'B')
 					{
 						//DESTROY ENEMY
-						cout << "Enemy Takes Damage" << endl;
+						RemoveEntity(i);
+						//Destroy Bullet
+						RemoveEntity(j);
+						cout << "Enemy Dies" << endl;
 					}
 				}
 				//CHECK FOR BULLET
@@ -218,13 +221,13 @@ void Simplex::MyEntityManager::Update(void)
 					if (m_entityList[j]->GetUniqueID()[0] == 'W')
 					{
 						//DESTROY BULLET
-						cout << "Bullet go BRRRRR" << endl;
+						cout << "Bullet go byebye!" << endl;
+						RemoveEntity(i);
 					}
 				}
 			}
 		}
 	}
-
 }
 void Simplex::MyEntityManager::AddEntity(MyEntity* p)
 {
@@ -319,5 +322,19 @@ void Simplex::MyEntityManager::AddEntityToRenderList(String a_sUniqueID, bool a_
 	if (pTemp)
 	{
 		pTemp->AddToRenderList(a_bRigidBody);
+	}
+}
+
+void Simplex::MyEntityManager::ChangeCollisionVisibility() 
+{
+	//gets current visibility
+	bool currentVisibility = m_entityList[0]->GetRigidBody()->GetVisibleOBB();
+
+	//loop through rigid bodies
+	for (uint i = 0; i < m_uEntityCount; i++) 
+	{
+		//m_entityList[i]->GetRigidBody()->SetVisibleARBB(!currentVisibility);
+		// m_entityList[i]->GetRigidBody()->SetVisibleBS(!currentVisibility);
+		m_entityList[i]->GetRigidBody()->SetVisibleOBB(!currentVisibility);
 	}
 }

@@ -159,6 +159,14 @@ public:
 	OUTPUT: ---
 	*/
 	void AddEntityToRenderList(String a_sUniqueID, bool a_bRigidBody = false);
+
+	/*
+	USAGE: Will turn on and off collision visibility by looping through all the entity's
+	rigid bodies
+	ARGUMENTS: ---
+	OUTPUT: ---
+	*/
+	void ChangeCollisionVisibility();
 	
 private:
 	/*

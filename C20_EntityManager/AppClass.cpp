@@ -13,8 +13,8 @@ void Application::InitVariables(void)
 	//Entity Manager
 	m_pEntityMngr = MyEntityManager::GetInstance();
 	
-	//creeper
 	/*
+	//creeper
 	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Creeper");
 	m_pEntityMngr->SetAxisVisibility(true, "Creeper"); //set visibility of the entity's axis
 
@@ -70,15 +70,6 @@ void Application::InitVariables(void)
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(17.0f, -5.0f, 23.0f)) * glm::scale(vector3(68.0f, 7.5f, 2.0f)));
 	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall12");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(23.0f, -5.0f, 80.0f)) * glm::scale(vector3(16.0f, 7.5f, 2.0f)));
-
-
-	/*
-	//add an entity
-	m_pEntityMngr->AddEntity("Minecraft\\Pig.obj", "Pig");
-	//set the model matrix and visibility of the last entity added
-	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(-2.0f,-1.0f,-1.0f)));
-	m_pEntityMngr->SetAxisVisibility(true);
-	*/
 
 	ShowCursor(false);
 }

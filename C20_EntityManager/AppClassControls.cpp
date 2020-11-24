@@ -460,6 +460,11 @@ void Application::ProcessKeyboard(void)
 
 	m_pEntityMngr->SetModelMatrix(glm::translate(pos) * glm::scale(size), "Player");
 #pragma endregion
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::V)) 
+	{
+		m_pEntityMngr->ChangeCollisionVisibility();
+	}
 	//move the creeper
 	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	//	m_v3Creeper.x -= 0.1f;
