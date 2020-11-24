@@ -11,6 +11,7 @@ Date: 2017/06
 #include "imgui\ImGuiObject.h"
 
 #include "MyEntityManager.h"
+using namespace std;
 
 namespace Simplex
 {
@@ -22,6 +23,7 @@ class Application
 	quaternion m_qCreeper; //orientation for the creeper
 		
 private:
+	vector<MyEntity*> m_enemies;	
 	String m_sProgrammer = "DOOM"; //programmer
 
 	static ImGuiObject gui; //GUI object
@@ -57,7 +59,6 @@ private:
 	sf::SoundBuffer m_soundBuffer; //buffer to play sound from
 	sf::Sound m_sound; //sound effect
 	sf::Music m_soundBGM; //background music
-
 public:
 #pragma region Constructor / Run / Destructor
 	/*

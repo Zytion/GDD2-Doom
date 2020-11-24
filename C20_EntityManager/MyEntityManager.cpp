@@ -167,11 +167,13 @@ MyEntityManager::~MyEntityManager(){Release();};
 // other methods
 void Simplex::MyEntityManager::Update(void)
 {
+	bool colliding = false;
 	//check collisions
 	for (uint i = 1; i < m_uEntityCount; i++)
 	{
 		if (m_entityList[0]->IsColliding(m_entityList[i])) 
 		{
+			colliding = true;
 			//take entityID
 			string entityID = m_entityList[i]->GetUniqueID();
 
@@ -194,13 +196,23 @@ void Simplex::MyEntityManager::Update(void)
 			}
 		}
 	}
-	
-	for (uint i = 14; i < m_uEntityCount - 1; i++) 
+	if (!colliding)
 	{
+		m_entityList[0]->ApplyMovement();
+	}
+	else
+	{
+		m_entityList[0]->ApplyMovement();
+	}
+	
+	for (uint i = 14; i < m_uEntityCount; i++) 
+	{
+		colliding = false;
 		for (uint j = i + 1; j < m_uEntityCount; j++) 
 		{
 			if (m_entityList[i]->IsColliding(m_entityList[j]))
 			{
+				colliding = true;
 				//CHECK FOR ENEMIES
 				if (m_entityList[i]->GetUniqueID()[0] == 'E')
 				{
@@ -226,6 +238,10 @@ void Simplex::MyEntityManager::Update(void)
 					}
 				}
 			}
+		}
+		if (!colliding)
+		{
+			m_entityList[i]->ApplyMovement();
 		}
 	}
 }

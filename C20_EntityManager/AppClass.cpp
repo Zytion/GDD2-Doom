@@ -13,11 +13,21 @@ void Application::InitVariables(void)
 	//Entity Manager
 	m_pEntityMngr = MyEntityManager::GetInstance();
 	
-	/*
-	//creeper
-	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Creeper");
-	m_pEntityMngr->SetAxisVisibility(true, "Creeper"); //set visibility of the entity's axis
 
+	//Player must be the first object
+	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Player");
+	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(5, -3, 15)) * glm::scale(vector3(3.0f, 6.0f, 3.0f)), "Player");
+	//creeper
+	
+	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Enemy1");
+	m_pEntityMngr->SetAxisVisibility(true, "Enemy1"); //set visibility of the entity's axis
+	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(20.0f, -2.5f, 10.0f)));
+
+	m_enemies.push_back(m_pEntityMngr->GetEntity(-1));
+	m_enemies[0]->m_destinations.push_back(vector3(10, 3, 10));
+	m_enemies[0]->m_destinations.push_back(vector3(-10, 3, 10));
+	m_enemies[0]->m_destinations.push_back(vector3(10, 3, -10));
+	/*
 	//steve
 	m_pEntityMngr->AddEntity("Minecraft\\Steve.obj", "Steve");
 	m_pEntityMngr->SetAxisVisibility(true, "Steve"); //set visibility of the entity's axis
@@ -35,8 +45,6 @@ void Application::InitVariables(void)
 	m_pEntityMngr->SetAxisVisibility(true);
 	*/		
 
-	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Player");
-	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(0, 0, 0)) * glm::scale(vector3(3.0f, 6.0f, 3.0f)), "Player");
 
 
 	//OUTSIDE WALLS AND FLOORS
@@ -103,6 +111,32 @@ void Application::Display(void)
 	//render list call
 	m_uRenderCallCount = m_pMeshMngr->Render();
 
+	static float fTimer = 0;	//store the new timer
+	static uint uClock = m_pSystem->GenClock(); //generate a new clock for that timer
+	fTimer += m_pSystem->GetDeltaTime(uClock); //get the delta time for that timer
+
+	//I am not running this right now, please fix before pushing
+	/*
+	for (uint i = 0; i < 1; i++)
+	{
+		MyEntity* enemy = m_enemies[i];
+		int index = enemy->m_destinationIndex;
+		vector3 dest = enemy->m_destinations[index];
+		vector3 pos = glm::lerp(enemy->GetModelMatrix(), dest, fTimer/6);	//this is not how lerp function is called
+
+		if (glm::distance(pos, dest) < 1) {
+			cout << "changing order" << endl;
+			if (enemy->m_destinationIndex == 2) {
+				enemy->m_destinationIndex = 0;
+			}
+			else {
+				enemy->m_destinationIndex++;
+			}
+		}
+		matrix4 m4Model = glm::translate(pos);
+		enemy->SetModelMatrix(m4Model);
+	}
+	*/
 	//clear the render list
 	m_pMeshMngr->ClearRenderList();
 	
