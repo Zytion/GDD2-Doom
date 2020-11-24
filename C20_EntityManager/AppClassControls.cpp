@@ -425,35 +425,36 @@ void Application::ProcessKeyboard(void)
 	bool bMultiplier = sf::Keyboard::isKeyPressed(sf::Keyboard::LShift) ||
 		sf::Keyboard::isKeyPressed(sf::Keyboard::RShift);
 
-	float fMultiplier = 2.0f;
+	float fMultiplier = 1.5f;
 
 	//if (bMultiplier)
 	//	fMultiplier = 5.0f;
 
 	vector3 forward = m_pCameraMngr->GetForward();
 	vector3 forwardProj = glm::normalize(forward - glm::proj(forward, vector3(0.0f, 1.0f, 0.0f)));
-	m_pCameraMngr->SetForward(forwardProj);
+	vector3 up = vector3(0, 1.0f, 0);
+	vector3 right = glm::normalize(glm::cross(up, forwardProj));
+
+	MyEntity* player = m_pEntityMngr->GetEntity(0);
+
+	vector3 velocity = vector3(0.0f, 0.0f, 0.0f);
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-		m_pCameraMngr->MoveForward(m_fMovementSpeed * fMultiplier);
+		velocity += forwardProj;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-		m_pCameraMngr->MoveForward(-m_fMovementSpeed * fMultiplier);
-
-	m_pCameraMngr->SetForward(forward);
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+		velocity -= forwardProj;
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-		m_pCameraMngr->MoveSideways(-m_fMovementSpeed * fMultiplier);
+		velocity += right;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-		m_pCameraMngr->MoveSideways(m_fMovementSpeed * fMultiplier);
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		velocity -= right;
 
-	
-	vector3 pos = m_pCameraMngr->GetPosition();
-	pos = vector3(pos.x, 0, pos.z);
-	vector3 size = vector3(2.0f, 5.0f, 2.0f);
-	pos -= size / 2;
-
-	m_pEntityMngr->SetModelMatrix(glm::translate(pos) * glm::scale(size), "Player");
+	player->SetVelocity(velocity * m_fMovementSpeed * fMultiplier);
+	matrix4 mat = player->GetModelMatrix();
+	vector3 position = vector3(mat[3]) + (vector3(mat[0][0], mat[1][1], mat[2][2]) / 2.0f);
+	m_pCameraMngr->SetPositionTargetAndUp(vector3(position), vector3(position) + forward, m_pCameraMngr->GetUpward());
 #pragma endregion
 }
 //Joystick

@@ -13,6 +13,10 @@ void Application::InitVariables(void)
 	//Entity Manager
 	m_pEntityMngr = MyEntityManager::GetInstance();
 	
+
+	//Player must be the first object
+	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Player");
+	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(5, -3, 15)) * glm::scale(vector3(3.0f, 6.0f, 3.0f)), "Player");
 	//creeper
 	
 	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Enemy1");
@@ -40,9 +44,6 @@ void Application::InitVariables(void)
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(0.0f, -2.5f, 0.0f)));
 	m_pEntityMngr->SetAxisVisibility(true);
 	*/		
-
-	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Player");
-	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(0, 0, 0)) * glm::scale(vector3(3.0f, 6.0f, 3.0f)), "Player");
 
 
 
