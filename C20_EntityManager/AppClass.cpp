@@ -40,35 +40,35 @@ void Application::InitVariables(void)
 
 
 	//OUTSIDE WALLS AND FLOORS
-	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall_Floor");
+	m_pEntityMngr->AddEntity("Minecraft\\Floor.obj", "Wall_Floor");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(0.0f, -5.0f, 0.0f)) * glm::scale(vector3(140.0f, 1.0f, 100.0f)));
-	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(0.0f, -4.0f, 0.0f)) * glm::scale(vector3(140.0f, 10.0f, 1.0f)));
-	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(0.0f, -4.0f, 99.0f)) * glm::scale(vector3(140.0f, 10.0f, 1.0f)));
-	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(139.0f, -4.0f, 1.0f)) * glm::scale(vector3(1.0f, 10.0f, 98.0f)));
-	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(0.0f, -4.0f, 1.0f)) * glm::scale(vector3(1.0f, 10.0f, 98.0f)));
 
 	//INSIDE WALLS
-	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(113.0f, -4.0f, 43.0f)) * glm::scale(vector3(2.0f, 7.5f, 20.0f)));
-	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(113.0f, -4.0f, 1.0f)) * glm::scale(vector3(2.0f, 7.5f, 33.0f)));
-	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(70.0f, -4.0f, 73.0f)) * glm::scale(vector3(2.0f, 7.5f, 26.0f)));
-	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(23.0f, -4.0f, 25.0f)) * glm::scale(vector3(2.0f, 7.5f, 55.0f)));
-	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(15.0f, -4.0f, 14.0f)) * glm::scale(vector3(2.0f, 7.5f, 11.0f)));
 
 	//INSIDE WALLS pt.2
-	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(55.0f, -4.0f, 63.0f)) * glm::scale(vector3(60.0f, 7.5f, 2.0f)));
-	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(17.0f, -4.0f, 23.0f)) * glm::scale(vector3(68.0f, 7.5f, 2.0f)));
-	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(23.0f, -4.0f, 80.0f)) * glm::scale(vector3(16.0f, 7.5f, 2.0f)));
 
 
