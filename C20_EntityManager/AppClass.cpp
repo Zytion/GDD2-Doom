@@ -81,7 +81,6 @@ void Application::InitVariables(void)
 	m_enemies.push_back(m_pEntityMngr->GetEntity());
 	m_enemies[0]->m_destinations.push_back(vector3(5, -3.75, 5));
 	m_enemies[0]->m_destinations.push_back(vector3(40, -3.75, 5));
-	m_enemies[0]->m_destinationCount = 2;
 
 	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Enemy1");
 	m_pEntityMngr->SetAxisVisibility(true, "Enemy1"); //set visibility of the entity's axis
@@ -90,7 +89,125 @@ void Application::InitVariables(void)
 	m_enemies.push_back(m_pEntityMngr->GetEntity());
 	m_enemies[1]->m_destinations.push_back(vector3(5, -3.75, 40));
 	m_enemies[1]->m_destinations.push_back(vector3(5, -3.75, 10));
-	m_enemies[1]->m_destinationCount = 2;
+
+	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Enemy1");
+	m_pEntityMngr->SetAxisVisibility(true, "Enemy1"); //set visibility of the entity's axis
+	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(20.0f, 30.0f, 10.0f)));
+
+	m_enemies.push_back(m_pEntityMngr->GetEntity());
+	m_enemies[2]->m_destinations.push_back(vector3(40, -3.75, 40));
+	m_enemies[2]->m_destinations.push_back(vector3(40, -3.75, 50));
+	m_enemies[2]->m_destinations.push_back(vector3(50, -3.75, 50));
+	m_enemies[2]->m_destinations.push_back(vector3(50, -3.75, 40));
+
+	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Enemy1");
+	m_pEntityMngr->SetAxisVisibility(true, "Enemy1"); //set visibility of the entity's axis
+	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(20.0f, 30.0f, 10.0f)));
+
+	m_enemies.push_back(m_pEntityMngr->GetEntity());
+	m_enemies[3]->m_destinations.push_back(vector3(65, -3.75, 40));
+	m_enemies[3]->m_destinations.push_back(vector3(55, -3.75, 40));
+	m_enemies[3]->m_destinations.push_back(vector3(55, -3.75, 50));
+	m_enemies[3]->m_destinations.push_back(vector3(65, -3.75, 50));
+
+	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Enemy1");
+	m_pEntityMngr->SetAxisVisibility(true, "Enemy1"); //set visibility of the entity's axis
+	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(20.0f, 30.0f, 10.0f)));
+
+	m_enemies.push_back(m_pEntityMngr->GetEntity());
+	m_enemies[4]->m_destinations.push_back(vector3(80, -3.75, 50));
+	m_enemies[4]->m_destinations.push_back(vector3(80, -3.75, 40));
+	m_enemies[4]->m_destinations.push_back(vector3(70, -3.75, 40));
+	m_enemies[4]->m_destinations.push_back(vector3(70, -3.75, 50));
+
+	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Enemy1");
+	m_pEntityMngr->SetAxisVisibility(true, "Enemy1"); //set visibility of the entity's axis
+	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(20.0f, 30.0f, 10.0f)));
+
+	m_enemies.push_back(m_pEntityMngr->GetEntity());
+	m_enemies[5]->m_destinations.push_back(vector3(85, -3.75, 50));
+	m_enemies[5]->m_destinations.push_back(vector3(95, -3.75, 50));
+	m_enemies[5]->m_destinations.push_back(vector3(95, -3.75, 40));
+	m_enemies[5]->m_destinations.push_back(vector3(85, -3.75, 40));
+
+	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Enemy1");
+	m_pEntityMngr->SetAxisVisibility(true, "Enemy1"); //set visibility of the entity's axis
+	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(20.0f, 30.0f, 10.0f)));
+
+	m_enemies.push_back(m_pEntityMngr->GetEntity());
+	m_enemies[6]->m_destinations.push_back(vector3(85, -3.75, 5));
+	m_enemies[6]->m_destinations.push_back(vector3(95, -3.75, 35));
+	m_enemies[6]->m_destinations.push_back(vector3(105, -3.75, 5));
+
+	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Enemy1");
+	m_pEntityMngr->SetAxisVisibility(true, "Enemy1"); //set visibility of the entity's axis
+	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(20.0f, 30.0f, 10.0f)));
+
+	m_enemies.push_back(m_pEntityMngr->GetEntity());
+	m_enemies[7]->m_destinations.push_back(vector3(70, -3.75, 5));
+	m_enemies[7]->m_destinations.push_back(vector3(70, -3.75, 15));
+
+	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Enemy1");
+	m_pEntityMngr->SetAxisVisibility(true, "Enemy1"); //set visibility of the entity's axis
+	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(20.0f, 30.0f, 10.0f)));
+
+	m_enemies.push_back(m_pEntityMngr->GetEntity());
+
+	m_enemies[8]->m_destinations.push_back(vector3(60, -3.75, 15));
+	m_enemies[8]->m_destinations.push_back(vector3(60, -3.75, 5));
+
+	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Enemy1");
+	m_pEntityMngr->SetAxisVisibility(true, "Enemy1"); //set visibility of the entity's axis
+	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(20.0f, 30.0f, 10.0f)));
+
+	m_enemies.push_back(m_pEntityMngr->GetEntity());
+	m_enemies[9]->m_destinations.push_back(vector3(50, -3.75, 5));
+	m_enemies[9]->m_destinations.push_back(vector3(50, -3.75, 15));
+
+	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Enemy1");
+	m_pEntityMngr->SetAxisVisibility(true, "Enemy1"); //set visibility of the entity's axis
+	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(20.0f, 30.0f, 10.0f)));
+
+	m_enemies.push_back(m_pEntityMngr->GetEntity());
+	m_enemies[10]->m_destinations.push_back(vector3(40, -3.75, 15));
+	m_enemies[10]->m_destinations.push_back(vector3(40, -3.75, 5));
+
+	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Enemy1");
+	m_pEntityMngr->SetAxisVisibility(true, "Enemy1"); //set visibility of the entity's axis
+	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(20.0f, 30.0f, 10.0f)));
+
+	m_enemies.push_back(m_pEntityMngr->GetEntity());
+	m_enemies[11]->m_destinations.push_back(vector3(15, -3.75, 40));
+	m_enemies[11]->m_destinations.push_back(vector3(5, -3.75, 40));
+
+	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Enemy1");
+	m_pEntityMngr->SetAxisVisibility(true, "Enemy1"); //set visibility of the entity's axis
+	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(20.0f, 30.0f, 10.0f)));
+
+	m_enemies.push_back(m_pEntityMngr->GetEntity());
+	m_enemies[12]->m_destinations.push_back(vector3(5, -3.75, 50));
+	m_enemies[12]->m_destinations.push_back(vector3(15, -3.75, 50));
+	
+
+	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Enemy1");
+	m_pEntityMngr->SetAxisVisibility(true, "Enemy1"); //set visibility of the entity's axis
+	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(20.0f, 30.0f, 10.0f)));
+
+	m_enemies.push_back(m_pEntityMngr->GetEntity());
+	m_enemies[13]->m_destinations.push_back(vector3(15, -3.75, 60));
+	m_enemies[13]->m_destinations.push_back(vector3(5, -3.75, 60));
+	
+
+	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Enemy1");
+	m_pEntityMngr->SetAxisVisibility(true, "Enemy1"); //set visibility of the entity's axis
+	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(20.0f, 30.0f, 10.0f)));
+
+	m_enemies.push_back(m_pEntityMngr->GetEntity());
+	m_enemies[14]->m_destinations.push_back(vector3(5, -3.75, 70));
+	m_enemies[14]->m_destinations.push_back(vector3(15, -3.75, 70));
+	
+	
+	
 
 
 	ShowCursor(false);

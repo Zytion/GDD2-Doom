@@ -30,7 +30,6 @@ class MyEntity
 public:
 	float m_timer = 0;
 	int m_destinationIndex = 0;
-	int m_destinationCount = 0;
 	std::vector<vector3> m_destinations;
 	
 	/*

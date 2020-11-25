@@ -176,7 +176,7 @@ void Simplex::MyEntityManager::Update(void)
 			int index = enemy->m_destinationIndex;
 			int index2;
 			if (index == 0) {
-				index2 = enemy->m_destinationCount - 1;
+				index2 = enemy->m_destinations.size() - 1;
 			}
 			else {
 				index2 = index - 1;
@@ -186,7 +186,7 @@ void Simplex::MyEntityManager::Update(void)
 			vector3 pos = glm::lerp(dest2, dest, mtimer / 2);
 			if ((mtimer / 2) > 1) {
 				enemy->m_timer = timer;
-				if (enemy->m_destinationIndex == enemy->m_destinationCount - 1) {
+				if (enemy->m_destinationIndex == enemy->m_destinations.size() - 1) {
 					enemy->m_destinationIndex = 0;
 				}
 				else {
