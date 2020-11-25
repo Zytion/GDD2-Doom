@@ -88,7 +88,7 @@ MyRigidBody* Simplex::MyEntityManager::GetRigidBody(String a_sUniqueID)
 	//if the entity exists
 	if (pTemp)
 	{
-		return pTemp->GetRigidBody();
+return pTemp->GetRigidBody();
 	}
 	return nullptr;
 }
@@ -155,15 +155,15 @@ void Simplex::MyEntityManager::SetModelMatrix(matrix4 a_m4ToWorld, uint a_uIndex
 
 	// if out of bounds
 	if (a_uIndex >= m_uEntityCount)
-		a_uIndex = m_uEntityCount -1;
+		a_uIndex = m_uEntityCount - 1;
 
 	m_entityList[a_uIndex]->SetModelMatrix(a_m4ToWorld);
 }
 //The big 3
-MyEntityManager::MyEntityManager(){Init();}
-MyEntityManager::MyEntityManager(MyEntityManager const& other){ }
+MyEntityManager::MyEntityManager() { Init(); }
+MyEntityManager::MyEntityManager(MyEntityManager const& other) { }
 MyEntityManager& MyEntityManager::operator=(MyEntityManager const& other) { return *this; }
-MyEntityManager::~MyEntityManager(){Release();};
+MyEntityManager::~MyEntityManager() { Release(); };
 // other methods
 void Simplex::MyEntityManager::Update(void)
 {
@@ -171,16 +171,25 @@ void Simplex::MyEntityManager::Update(void)
 	//check collisions
 	for (uint i = 1; i < m_uEntityCount; i++)
 	{
-		if (m_entityList[0]->IsColliding(m_entityList[i])) 
+		if (m_entityList[0]->IsColliding(m_entityList[i]))
 		{
 			colliding = true;
 			//take entityID
 			string entityID = m_entityList[i]->GetUniqueID();
 
 			//CHECK FOR WALLS
-			if (entityID[0] == 'W') 
+			if (entityID[0] == 'W')
 			{
-				cout << "STOP MOVEMENT IN PROGRESS" << endl;
+				vector3 velocity = m_entityList[0]->GetVelocity();
+
+				vector3 line = m_entityList[0]->ColldingFace(m_entityList[i]);
+				float dot = velocity[0] * line[2] + velocity[2] * line[0];
+				float det = velocity[0] * line[2] - velocity[2] * line[0];
+				if (velocity != vector3(0) && atan2f(dot, det) > 0)
+				{
+					//cout << velocity.x << ", " << line.z << endl;
+					m_entityList[0]->SetVelocity(glm::proj(velocity, line));
+				}
 			}
 			//CHECK FOR BULLETS
 			else if (entityID[0] == 'B') 

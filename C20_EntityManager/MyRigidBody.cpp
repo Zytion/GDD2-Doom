@@ -1,6 +1,7 @@
 #include "MyRigidBody.h"
 using namespace Simplex;
 //Allocation
+
 void MyRigidBody::Init(void)
 {
 	m_pMeshMngr = MeshManager::GetInstance();
@@ -71,7 +72,7 @@ void MyRigidBody::SetColorNotColliding(vector3 a_v3Color) { m_v3ColorNotCollidin
 vector3 MyRigidBody::GetCenterLocal(void) { return m_v3Center; }
 vector3 MyRigidBody::GetMinLocal(void) { return m_v3MinL; }
 vector3 MyRigidBody::GetMaxLocal(void) { return m_v3MaxL; }
-vector3 MyRigidBody::GetCenterGlobal(void){	return vector3(m_m4ToWorld * vector4(m_v3Center, 1.0f)); }
+vector3 MyRigidBody::GetCenterGlobal(void) { return vector3(m_m4ToWorld * vector4(m_v3Center, 1.0f)); }
 vector3 MyRigidBody::GetMinGlobal(void) { return m_v3MinG; }
 vector3 MyRigidBody::GetMaxGlobal(void) { return m_v3MaxG; }
 vector3 MyRigidBody::GetHalfWidth(void) { return m_v3HalfWidth; }
@@ -265,6 +266,25 @@ bool MyRigidBody::IsColliding(MyRigidBody* const other)
 		other->RemoveCollisionWith(this);
 	}
 	return bColliding;
+}
+
+vector3 MyRigidBody::CollidingFace(MyRigidBody* const other)
+{
+	vector3 v = vector3(0);
+	
+	if (this->m_v3MinG.x <= other->m_v3MaxG.x && this->m_v3MaxG.x >= other->m_v3MaxG.x)
+		v.z = -1.0f;
+	else if (this->m_v3MaxG.x >= other->m_v3MinG.x && this->m_v3MinG.x <= other->m_v3MinG.x)
+		v.z = 1.0f;
+
+	else if (this->m_v3MinG.z <= other->m_v3MaxG.z && this->m_v3MaxG.z >= other->m_v3MaxG.z)
+		v.x = -1.0f;
+	else if (this->m_v3MaxG.z >= other->m_v3MinG.z && this->m_v3MinG.z <= other->m_v3MinG.z)
+		v.x = 1.0f;
+
+	m_pMeshMngr->AddLineToRenderList(matrix4(), m_v3MaxG, m_v3MaxG + v, C_GREEN, C_GREEN);
+
+	return v;
 }
 
 void MyRigidBody::AddToRenderList(void)

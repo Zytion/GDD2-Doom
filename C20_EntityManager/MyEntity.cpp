@@ -120,6 +120,16 @@ bool Simplex::MyEntity::IsColliding(MyEntity* const other)
 
 	return m_pRigidBody->IsColliding(other->GetRigidBody());
 }
+
+vector3 Simplex::MyEntity::ColldingFace(MyEntity* const other)
+{
+	//if not in memory return
+	if (!m_bInMemory || !other->m_bInMemory)
+		return vector3(0);
+
+	return m_pRigidBody->CollidingFace(other->GetRigidBody());
+}
+
 MyEntity* Simplex::MyEntity::GetEntity(String a_sUniqueID)
 {
 	//look the entity based on the unique id

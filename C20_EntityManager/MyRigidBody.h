@@ -6,6 +6,7 @@ Date: 2017/06
 #define __MYRIGIDBODY_H_
 
 #include "Simplex\Simplex.h"
+enum Faces { none, front, back, left, right, top, bottom };
 
 namespace Simplex
 {
@@ -104,6 +105,7 @@ public:
 	OUTPUT: are they colliding?
 	*/
 	bool IsColliding(MyRigidBody* const other);
+	vector3 CollidingFace(MyRigidBody* const other);
 #pragma region Accessors
 	/*
 	Usage: Gets visibility of bounding sphere

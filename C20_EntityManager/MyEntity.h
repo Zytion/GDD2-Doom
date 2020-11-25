@@ -117,6 +117,7 @@ public:
 	OUTPUT: are they colliding?
 	*/
 	bool IsColliding(MyEntity* const other);
+	vector3 ColldingFace(MyEntity* const other);
 	/*
 	USAGE: Gets the Entity specified by unique ID, nullptr if not exists
 	ARGUMENTS: String a_sUniqueID -> unique ID if the queried entity
