@@ -28,8 +28,11 @@ class MyEntity
 	static std::map<String, MyEntity*> m_IDMap; //a map of the unique ID's
 
 public:
+	float m_timer = 0;
 	int m_destinationIndex = 0;
+	int m_destinationCount = 0;
 	std::vector<vector3> m_destinations;
+	
 	/*
 	Usage: Constructor that specifies the name attached to the Entity
 	Arguments:

@@ -18,6 +18,7 @@ class MyEntityManager
 	static MyEntityManager* m_pInstance; // Singleton pointer
 	std::vector<MyEntity*> m_entityList; //entities list
 public:
+	float timer = 0;
 	/*
 	Usage: Gets the singleton pointer
 	Arguments: ---

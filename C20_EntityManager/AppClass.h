@@ -21,8 +21,8 @@ class Application
 	MyEntityManager* m_pEntityMngr = nullptr; //Entity Manager
 	vector3 m_v3Creeper; //position of the creeper
 	quaternion m_qCreeper; //orientation for the creeper
-		
 private:
+	int playerScore = 0;
 	vector<MyEntity*> m_enemies;	
 	String m_sProgrammer = "DOOM"; //programmer
 
@@ -100,6 +100,13 @@ public:
 	ARGUMENTS: ---
 	OUTPUT: ---
 	*/
+	int GetScore(void) {
+		return playerScore;
+	}
+
+	void UpdateScore(int val) {
+		playerScore += val;
+	}
 	~Application(void);
 #pragma endregion
 

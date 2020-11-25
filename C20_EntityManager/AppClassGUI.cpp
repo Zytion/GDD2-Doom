@@ -149,7 +149,7 @@ void Application::DrawGUI(void)
 		ImGui::Begin(sAbout.c_str(), (bool*)0, window_flags);
 		{
 			ImGui::Text("DOOM\n");
-			ImGui::Text("Score: %i \n", 1);
+			ImGui::Text("Score: %i \n", Application::GetScore());
 			ImGui::Text("FrameRate: %.2f [FPS] -> %.3f [ms/frame]\n",
 				ImGui::GetIO().Framerate, 1000.0f / ImGui::GetIO().Framerate);
 			/*

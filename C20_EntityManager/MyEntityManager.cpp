@@ -167,6 +167,37 @@ MyEntityManager::~MyEntityManager() { Release(); };
 // other methods
 void Simplex::MyEntityManager::Update(void)
 {
+	for (uint i = 1; i < m_uEntityCount; i++)
+	{
+		if (m_entityList[i]->GetUniqueID()[0] == 'E')
+		{
+			MyEntity* enemy = m_entityList[i];
+			float mtimer = timer - enemy->m_timer;
+			int index = enemy->m_destinationIndex;
+			int index2;
+			if (index == 0) {
+				index2 = enemy->m_destinationCount - 1;
+			}
+			else {
+				index2 = index - 1;
+			}
+			vector3 dest = enemy->m_destinations[index];
+			vector3 dest2 = enemy->m_destinations[index2];
+			vector3 pos = glm::lerp(dest2, dest, mtimer / 2);
+			if ((mtimer / 2) > 1) {
+				enemy->m_timer = timer;
+				if (enemy->m_destinationIndex == enemy->m_destinationCount - 1) {
+					enemy->m_destinationIndex = 0;
+				}
+				else {
+					enemy->m_destinationIndex++;
+				}
+			}
+			matrix4 m4Model = glm::translate(pos) * glm::scale(vector3(3.0f, 3.0f, 3.0f));
+			enemy->SetModelMatrix(m4Model);
+		}
+	}
+
 	bool colliding = false;
 	//check collisions
 	for (uint i = 1; i < m_uEntityCount; i++)

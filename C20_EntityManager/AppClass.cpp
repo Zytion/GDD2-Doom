@@ -40,47 +40,57 @@ void Application::InitVariables(void)
 
 
 	//OUTSIDE WALLS AND FLOORS
-	m_pEntityMngr->AddEntity("Minecraft\\Floor.obj", "Wall_Floor");
+	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall_Floor");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(0.0f, -5.0f, 0.0f)) * glm::scale(vector3(140.0f, 1.0f, 100.0f)));
-	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(0.0f, -4.0f, 0.0f)) * glm::scale(vector3(140.0f, 10.0f, 1.0f)));
-	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(0.0f, -4.0f, 99.0f)) * glm::scale(vector3(140.0f, 10.0f, 1.0f)));
-	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(139.0f, -4.0f, 1.0f)) * glm::scale(vector3(1.0f, 10.0f, 98.0f)));
-	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(0.0f, -4.0f, 1.0f)) * glm::scale(vector3(1.0f, 10.0f, 98.0f)));
 
 	//INSIDE WALLS
-	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(113.0f, -4.0f, 43.0f)) * glm::scale(vector3(2.0f, 7.5f, 20.0f)));
-	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(113.0f, -4.0f, 1.0f)) * glm::scale(vector3(2.0f, 7.5f, 33.0f)));
-	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(70.0f, -4.0f, 73.0f)) * glm::scale(vector3(2.0f, 7.5f, 26.0f)));
-	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(23.0f, -4.0f, 25.0f)) * glm::scale(vector3(2.0f, 7.5f, 55.0f)));
-	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(15.0f, -4.0f, 14.0f)) * glm::scale(vector3(2.0f, 7.5f, 11.0f)));
 
 	//INSIDE WALLS pt.2
-	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(55.0f, -4.0f, 63.0f)) * glm::scale(vector3(60.0f, 7.5f, 2.0f)));
-	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(17.0f, -4.0f, 23.0f)) * glm::scale(vector3(68.0f, 7.5f, 2.0f)));
-	m_pEntityMngr->AddEntity("Minecraft\\Wall.obj", "Wall");
+	m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Wall");
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(23.0f, -4.0f, 80.0f)) * glm::scale(vector3(16.0f, 7.5f, 2.0f)));
 
 
 	//ADD ENEMIES
+	
 	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Enemy1");
 	m_pEntityMngr->SetAxisVisibility(true, "Enemy1"); //set visibility of the entity's axis
 	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(20.0f, -2.5f, 10.0f)));
 
-	m_enemies.push_back(m_pEntityMngr->GetEntity(-1));
-	m_enemies[0]->m_destinations.push_back(vector3(10, 3, 10));
-	m_enemies[0]->m_destinations.push_back(vector3(-10, 3, 10));
-	m_enemies[0]->m_destinations.push_back(vector3(10, 3, -10));
+	m_enemies.push_back(m_pEntityMngr->GetEntity());
+	m_enemies[0]->m_destinations.push_back(vector3(5, -3.75, 5));
+	m_enemies[0]->m_destinations.push_back(vector3(40, -3.75, 5));
+	m_enemies[0]->m_destinationCount = 2;
+
+	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Enemy1");
+	m_pEntityMngr->SetAxisVisibility(true, "Enemy1"); //set visibility of the entity's axis
+	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(20.0f, 30.0f, 10.0f)));
+
+	m_enemies.push_back(m_pEntityMngr->GetEntity());
+	m_enemies[1]->m_destinations.push_back(vector3(5, -3.75, 40));
+	m_enemies[1]->m_destinations.push_back(vector3(5, -3.75, 10));
+	m_enemies[1]->m_destinationCount = 2;
 
 
 	ShowCursor(false);
@@ -96,11 +106,17 @@ void Application::Update(void)
 	//Is the first person camera active?
 	CameraRotation();
 
-	ProcessMouseClick();
+	ProcessMouseClick();	
 
+	static float fTimer = 0;	//store the new timer
+	static uint uClock = m_pSystem->GenClock(); //generate a new clock for that timer
+	fTimer += m_pSystem->GetDeltaTime(uClock); //get the delta time for that timer
+
+	m_pEntityMngr->timer = fTimer;
 	//Update Entity Manager
 	m_pEntityMngr->Update();
-		
+	
+
 	//Add objects to render list
 	m_pEntityMngr->AddEntityToRenderList(-1, true);
 }
@@ -115,32 +131,6 @@ void Application::Display(void)
 	//render list call
 	m_uRenderCallCount = m_pMeshMngr->Render();
 
-	static float fTimer = 0;	//store the new timer
-	static uint uClock = m_pSystem->GenClock(); //generate a new clock for that timer
-	fTimer += m_pSystem->GetDeltaTime(uClock); //get the delta time for that timer
-
-	//I am not running this right now, please fix before pushing
-	/*
-	for (uint i = 0; i < 1; i++)
-	{
-		MyEntity* enemy = m_enemies[i];
-		int index = enemy->m_destinationIndex;
-		vector3 dest = enemy->m_destinations[index];
-		vector3 pos = glm::lerp(enemy->GetModelMatrix(), dest, fTimer/6);	//this is not how lerp function is called
-
-		if (glm::distance(pos, dest) < 1) {
-			cout << "changing order" << endl;
-			if (enemy->m_destinationIndex == 2) {
-				enemy->m_destinationIndex = 0;
-			}
-			else {
-				enemy->m_destinationIndex++;
-			}
-		}
-		matrix4 m4Model = glm::translate(pos);
-		enemy->SetModelMatrix(m4Model);
-	}
-	*/
 	//clear the render list
 	m_pMeshMngr->ClearRenderList();
 	
