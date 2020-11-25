@@ -214,32 +214,37 @@ void Simplex::MyEntityManager::Update(void)
 		m_entityList[0]->ApplyMovement();
 	}
 	
-	for (uint i = 14; i < m_uEntityCount; i++) 
+	for (uint i = 1; i < m_uEntityCount; i++) 
 	{
 		colliding = false;
 		for (uint j = i + 1; j < m_uEntityCount; j++) 
 		{
+			string ientityID = m_entityList[i]->GetUniqueID();
+			string jentityID = m_entityList[j]->GetUniqueID();
+
 			if (m_entityList[i]->IsColliding(m_entityList[j]))
 			{
 				colliding = true;
-				//CHECK FOR ENEMIES
-				if (m_entityList[i]->GetUniqueID()[0] == 'E')
+				//CHECK WALLS FOR BULLETS
+				if (ientityID[0] == 'W')
+				{
+					if (jentityID[0] == 'B')
+					{
+						RemoveEntity(j);
+						cout << "Bullet go BYEBYE" << endl;
+					}
+				}
+
+				else if (m_entityList[i]->GetUniqueID()[0] == 'E')
 				{
 					//CHECK IF BULLET HIT
 					if (m_entityList[j]->GetUniqueID()[0] == 'B')
 					{
 						//DESTROY ENEMY
-						cout << "Enemy Takes Damage" << endl;
-					}
-				}
-				//CHECK FOR BULLET
-				else if (m_entityList[i]->GetUniqueID()[0] == 'B')
-				{
-					//BULLET COLLIDED WITH WALL
-					if (m_entityList[j]->GetUniqueID()[0] == 'W')
-					{
-						//DESTROY BULLET
-						cout << "Bullet go BRRRRR" << endl;
+						RemoveEntity(i);
+						//Destroy Bullet
+						RemoveEntity(j);
+						cout << "Enemy Dies" << endl;
 					}
 				}
 			}
@@ -249,7 +254,6 @@ void Simplex::MyEntityManager::Update(void)
 			m_entityList[i]->ApplyMovement();
 		}
 	}
-
 }
 void Simplex::MyEntityManager::AddEntity(MyEntity* p)
 {
@@ -344,5 +348,19 @@ void Simplex::MyEntityManager::AddEntityToRenderList(String a_sUniqueID, bool a_
 	if (pTemp)
 	{
 		pTemp->AddToRenderList(a_bRigidBody);
+	}
+}
+
+void Simplex::MyEntityManager::ChangeCollisionVisibility() 
+{
+	//gets current visibility
+	bool currentVisibility = m_entityList[0]->GetRigidBody()->GetVisibleOBB();
+
+	//loop through rigid bodies
+	for (uint i = 0; i < m_uEntityCount; i++) 
+	{
+		//m_entityList[i]->GetRigidBody()->SetVisibleARBB(!currentVisibility);
+		// m_entityList[i]->GetRigidBody()->SetVisibleBS(!currentVisibility);
+		m_entityList[i]->GetRigidBody()->SetVisibleOBB(!currentVisibility);
 	}
 }

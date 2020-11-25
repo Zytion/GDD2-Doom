@@ -456,6 +456,60 @@ void Application::ProcessKeyboard(void)
 	vector3 position = vector3(mat[3]) + (vector3(mat[0][0], mat[1][1], mat[2][2]) / 2.0f);
 	m_pCameraMngr->SetPositionTargetAndUp(vector3(position), vector3(position) + forward, m_pCameraMngr->GetUpward());
 #pragma endregion
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::V)) 
+	{
+		m_pEntityMngr->ChangeCollisionVisibility();
+	}
+	//move the creeper
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	//	m_v3Creeper.x -= 0.1f;
+
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	//	m_v3Creeper.x += 0.1f;
+
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	//{
+	//	if (m_bModifier)
+	//		m_v3Creeper.z -= 0.1f;
+	//	else
+	//		m_v3Creeper.y += 0.1f;
+	//}
+
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	//{
+	//	if (m_bModifier)
+	//		m_v3Creeper.z += 0.1f;
+	//	else
+	//		m_v3Creeper.y -= 0.1f;
+	//}
+
+	//Orient the creeper
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
+	//{
+	//	if (m_bModifier)
+	//		m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(1.0f), AXIS_X);
+	//	else
+	//		m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(-1.0f), AXIS_X);
+	//}
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y))
+	//{
+	//	if (m_bModifier)
+	//		m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(1.0f), AXIS_Y);
+	//	else
+	//		m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(-1.0f), AXIS_Y);
+	//}
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+	//{
+	//	if (m_bModifier)
+	//		m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(1.0f), AXIS_Z);
+	//	else
+	//		m_qCreeper = m_qCreeper * glm::angleAxis(glm::radians(-1.0f), AXIS_Z);
+	//}
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+	//{
+	//	m_qCreeper = quaternion();
+	//}
 }
 //Joystick
 void Application::ProcessJoystick(void)

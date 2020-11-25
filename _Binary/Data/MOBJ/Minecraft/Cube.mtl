@@ -1,7 +1,12 @@
-newmtl Floor_SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd Minecraft_Cube.png
-Ni 1.00
+#
+#
+#
+
+newmtl Grass Mesh_Floor_SG
+illum 2
+Ka 0.000000 0.000000 0.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ns 0.000000
+map_Kd 21_BrightRed.png
+
