@@ -141,6 +141,25 @@ void Application::DrawGUI(void)
 	static ImVec4 v4Color = ImColor(255, 0, 0);
 	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar;
 	//Main Window
+	if (m_bGUI_Start) 
+	{
+		ImGui::SetNextWindowPos(ImVec2(1, 1), ImGuiSetCond_FirstUseEver);
+		ImGui::SetNextWindowSize(ImVec2(1000, 60), ImGuiSetCond_FirstUseEver);
+		String sAbout = m_pSystem->GetAppName() + " - Start";
+
+		ImGui::Begin(sAbout.c_str(), (bool*)0, window_flags);
+		{
+			ImGui::Text("DOOM: But With One Gun...\n");
+			ImGui::Text("Team KeySm4sh \n", Application::GetScore());
+			ImGui::Text("FrameRate: %.2f [FPS] -> %.3f [ms/frame]\n",
+				ImGui::GetIO().Framerate, 1000.0f / ImGui::GetIO().Framerate);
+			ImGui::Text("Commands: WASD To Move\n");
+			ImGui::Text("V to toggle collision box viewing\n");
+			ImGui::Separator();
+			ImGui::Text("Start Game By Pressing E");
+		}
+		ImGui::End();
+	}
 	if (m_bGUI_Main)
 	{
 		ImGui::SetNextWindowPos(ImVec2(1, 1), ImGuiSetCond_FirstUseEver);
@@ -152,26 +171,24 @@ void Application::DrawGUI(void)
 			ImGui::Text("Score: %i \n", Application::GetScore());
 			ImGui::Text("FrameRate: %.2f [FPS] -> %.3f [ms/frame]\n",
 				ImGui::GetIO().Framerate, 1000.0f / ImGui::GetIO().Framerate);
-			/*
-				ImGui::Text("Control:\n");
-				ImGui::Text("   WASD: Movement\n");
-				ImGui::Text("	 F1: Perspective\n");
-				ImGui::Text("	 F2: Orthographic X\n");
-				ImGui::Text("	 F3: Orthographic Y\n");
-				ImGui::Text("	 F4: Orthographic Z\n");
-				ImGui::Separator();
-				ImGui::Text("  Left: Move Creeper\n");
-				ImGui::Text(" Right: Move Creeper\n");
-				ImGui::Text("    Up: Move Creeper\n");
-				ImGui::Text("  Down: Move Creeper\n");
-				ImGui::Text(" Shift: Modify Up/Down\n");
-			*/
+				//ImGui::Text("Control:\n");
+				//ImGui::Text("   WASD: Movement\n");
+				//ImGui::Text("	 F1: Perspective\n");
+				//ImGui::Text("	 F2: Orthographic X\n");
+				//ImGui::Text("	 F3: Orthographic Y\n");
+				//ImGui::Text("	 F4: Orthographic Z\n");
+				//ImGui::Separator();
+				//ImGui::Text("  Left: Move Creeper\n");
+				//ImGui::Text(" Right: Move Creeper\n");
+				//ImGui::Text("    Up: Move Creeper\n");
+				//ImGui::Text("  Down: Move Creeper\n");
+				//ImGui::Text(" Shift: Modify Up/Down\n");
 			ImGui::Separator();
 			ImGui::TextColored(ImColor(255, 255, 0), "Doom with One Gun\n");
 		}
 		ImGui::End();
 	}
-	
+
 	//Credits
 	if (false)
 	{

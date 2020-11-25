@@ -27,8 +27,9 @@ private:
 	String m_sProgrammer = "DOOM"; //programmer
 
 	static ImGuiObject gui; //GUI object
-	bool m_bGUI_Main = true; //show Main GUI window?
+	bool m_bGUI_Main = false; //show Main GUI window?
 	bool m_bGUI_Console = true; //show Credits GUI window?
+	bool m_bGUI_Start = true;	//show start menu
 	bool m_bGUI_Test = false; //show Test GUI window?
 	bool m_bGUI_Controller = false; //show Controller GUI window?
 

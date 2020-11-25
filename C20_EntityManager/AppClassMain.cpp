@@ -245,7 +245,8 @@ void Application::Init(String a_sApplicationName, uint a_uWidth, uint a_uHeight,
 	Reshape();
 
 	//Init GUI
-	m_bGUI_Main = true;
+	m_bGUI_Main = false;
+	m_bGUI_Start = true;
 	m_bGUI_Console = true;
 	m_bGUI_Controller = false;
 	m_bGUI_Test = false;

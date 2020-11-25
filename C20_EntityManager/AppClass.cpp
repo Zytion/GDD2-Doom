@@ -230,9 +230,11 @@ void Application::Update(void)
 	fTimer += m_pSystem->GetDeltaTime(uClock); //get the delta time for that timer
 
 	m_pEntityMngr->timer = fTimer;
-	//Update Entity Manager
-	m_pEntityMngr->Update();
-	
+	if (m_bGUI_Main == true) 
+	{
+		//Update Entity Manager
+		m_pEntityMngr->Update();
+	}
 
 	//Add objects to render list
 	m_pEntityMngr->AddEntityToRenderList(-1, true);

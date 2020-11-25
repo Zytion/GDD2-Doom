@@ -461,6 +461,14 @@ void Application::ProcessKeyboard(void)
 	{
 		m_pEntityMngr->ChangeCollisionVisibility();
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) 
+	{
+		if (m_bGUI_Start == true) 
+		{
+			m_bGUI_Start = false;
+			m_bGUI_Main = true;
+		}
+	}
 	//move the creeper
 	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	//	m_v3Creeper.x -= 0.1f;
