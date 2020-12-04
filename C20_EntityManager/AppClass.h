@@ -58,8 +58,11 @@ private:
 	uint m_uActCont = 0; //Active Controller of the Application
 
 	sf::SoundBuffer m_soundBuffer; //buffer to play sound from
+	sf::SoundBuffer m_musicBuffer; //buffer to play music from
+	bool soundLoaded = false;
+	bool musicLoaded = false;
 	sf::Sound m_sound; //sound effect
-	sf::Music m_soundBGM; //background music
+	sf::Sound m_soundBGM; //background music
 public:
 #pragma region Constructor / Run / Destructor
 	/*

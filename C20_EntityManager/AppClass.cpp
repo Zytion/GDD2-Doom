@@ -207,8 +207,19 @@ void Application::InitVariables(void)
 	m_enemies[14]->m_destinations.push_back(vector3(15, -3.75, 70));
 	
 	
-	
+	if (m_musicBuffer.loadFromFile("..\\_Binary\\Data\\Audio\\warwolfgaming_chanting.wav"))
+	{
+		musicLoaded = true;	
+	}
+	if (m_soundBuffer.loadFromFile("..\\_Binary\\Data\\Audio\\Impact.wav"))
+	{
+		soundLoaded = true;
+	}
+	m_soundBGM.setBuffer(m_musicBuffer);
+	m_soundBGM.play();
 
+	m_sound.setBuffer(m_soundBuffer);
+	m_sound.pause();
 
 	ShowCursor(false);
 }

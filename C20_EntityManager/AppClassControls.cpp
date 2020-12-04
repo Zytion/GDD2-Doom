@@ -409,6 +409,7 @@ void Application::ProcessMouseClick()
 		bullet->SetModelMatrix(glm::translate(position + forward) * glm::scale(vector3(0.2f)));
 		bullet->SetVelocity(5.0f * forward);
 		m_pEntityMngr->AddEntity(bullet);
+		m_sound.play();
 	}
 }
 
