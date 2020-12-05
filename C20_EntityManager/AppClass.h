@@ -99,18 +99,14 @@ public:
 	OUTPUT: ---
 	*/
 	void Run(void);
+	int GetScore(void);
+
+	void UpdateScore(int val);
 	/*
 	USAGE: Destructor
 	ARGUMENTS: ---
 	OUTPUT: ---
 	*/
-	int GetScore(void) {
-		return playerScore;
-	}
-
-	void UpdateScore(int val) {
-		playerScore += val;
-	}
 	~Application(void);
 #pragma endregion
 

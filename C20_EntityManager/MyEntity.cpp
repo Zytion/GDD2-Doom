@@ -1,4 +1,5 @@
 #include "MyEntity.h"
+#include "AppClass.h"
 using namespace Simplex;
 std::map<String, MyEntity*> MyEntity::m_IDMap;
 //  Accessors
