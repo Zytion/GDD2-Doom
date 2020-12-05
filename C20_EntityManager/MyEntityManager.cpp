@@ -167,6 +167,7 @@ MyEntityManager::~MyEntityManager() { Release(); };
 // other methods
 void Simplex::MyEntityManager::Update(void)
 {
+	enemyKilled = false;
 	for (uint i = 1; i < m_uEntityCount; i++)
 	{
 		if (m_entityList[i]->GetUniqueID()[0] == 'E')
@@ -274,8 +275,6 @@ void Simplex::MyEntityManager::Update(void)
 						enemyKilled = true;
 						//DESTROY ENEMY
 						RemoveEntity(i);
-						//Destroy Bullet
-						RemoveEntity(j);
 						cout << "Enemy Dies" << endl;
 					}
 				}

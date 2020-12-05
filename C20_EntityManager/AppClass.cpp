@@ -230,6 +230,7 @@ void Application::InitVariables(void)
 	}
 
 	m_death.setBuffer(m_deathBuffer);
+	m_death.setVolume(100);
 	m_death.pause();
 
 	m_soundBGM.setBuffer(m_musicBuffer);
@@ -267,10 +268,9 @@ void Application::Update(void)
 	//Add objects to render list
 	m_pEntityMngr->AddEntityToRenderList(-1, true);
 
-	if (m_pEntityMngr->enemyKilled) {
-
+	if (m_pEntityMngr->enemyKilled) 
+	{
 		//Make enemy death sound effect play here
-		m_death.setVolume(100);
 		m_death.play();
 
 		UpdateScore(1);
