@@ -59,8 +59,11 @@ private:
 
 	sf::SoundBuffer m_soundBuffer; //buffer to play sound from
 	sf::SoundBuffer m_musicBuffer; //buffer to play music from
+	sf::SoundBuffer m_deathBuffer;
 	bool soundLoaded = false;
 	bool musicLoaded = false;
+	bool deathSoundLoaded = false;
+	sf::Sound m_death;
 	sf::Sound m_sound; //sound effect
 	sf::Sound m_soundBGM; //background music
 public:

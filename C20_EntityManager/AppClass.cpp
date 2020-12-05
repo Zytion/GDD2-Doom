@@ -223,6 +223,15 @@ void Application::InitVariables(void)
 	{
 		soundLoaded = true;
 	}
+
+	if (m_deathBuffer.loadFromFile("..\\_Binary\\Data\\Audio\\Pew.wav"))
+	{
+		deathSoundLoaded = true;
+	}
+
+	m_death.setBuffer(m_deathBuffer);
+	m_death.pause();
+
 	m_soundBGM.setBuffer(m_musicBuffer);
 	m_soundBGM.play();
 
@@ -260,6 +269,8 @@ void Application::Update(void)
 
 	if (m_pEntityMngr->enemyKilled) {
 		//Make enemy death sound effect play here
+		m_death.setVolume(20);
+		m_death.play();
 		UpdateScore(1);
 		m_pEntityMngr->enemyKilled = false;
 	}
