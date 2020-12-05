@@ -2,11 +2,11 @@
 #
 #
 
-newmtl Grass Mesh_Floor_SG
-illum 2
+newmtl Cube_Cube
+illum 1
 Ka 0.000000 0.000000 0.000000
-Kd 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
 Ks 0.000000 0.000000 0.000000
-Ns 0.000000
-map_Kd Wall_1.png
+Ns 1.000000
+map_Kd bricks1.png
 
