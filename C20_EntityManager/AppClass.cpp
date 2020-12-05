@@ -205,6 +205,14 @@ void Application::InitVariables(void)
 	m_enemies.push_back(m_pEntityMngr->GetEntity());
 	m_enemies[14]->m_destinations.push_back(vector3(5, -3.75, 70));
 	m_enemies[14]->m_destinations.push_back(vector3(15, -3.75, 70));
+
+	m_pEntityMngr->AddEntity("Minecraft\\Creeper.obj", "Enemy1");
+	m_pEntityMngr->SetAxisVisibility(true, "Enemy1"); //set visibility of the entity's axis
+	m_pEntityMngr->SetModelMatrix(glm::translate(vector3(20.0f, 30.0f, 10.0f)));
+
+	m_enemies.push_back(m_pEntityMngr->GetEntity());
+	m_enemies[15]->m_destinations.push_back(vector3(5, -3.75, 70));
+	m_enemies[15]->m_destinations.push_back(vector3(15, -3.75, 70));
 	
 	
 	if (m_musicBuffer.loadFromFile("..\\_Binary\\Data\\Audio\\warwolfgaming_chanting.wav"))
