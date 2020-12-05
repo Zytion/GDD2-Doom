@@ -268,9 +268,11 @@ void Application::Update(void)
 	m_pEntityMngr->AddEntityToRenderList(-1, true);
 
 	if (m_pEntityMngr->enemyKilled) {
+
 		//Make enemy death sound effect play here
-		m_death.setVolume(20);
+		m_death.setVolume(100);
 		m_death.play();
+
 		UpdateScore(1);
 		m_pEntityMngr->enemyKilled = false;
 	}
