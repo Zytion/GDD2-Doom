@@ -271,6 +271,7 @@ void Simplex::MyEntityManager::Update(void)
 					//CHECK IF BULLET HIT
 					if (m_entityList[j]->GetUniqueID()[0] == 'B')
 					{
+						enemyKilled = true;
 						//DESTROY ENEMY
 						RemoveEntity(i);
 						//Destroy Bullet

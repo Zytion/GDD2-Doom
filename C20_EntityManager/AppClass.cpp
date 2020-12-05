@@ -249,7 +249,21 @@ void Application::Update(void)
 
 	//Add objects to render list
 	m_pEntityMngr->AddEntityToRenderList(-1, true);
+
+	if (m_pEntityMngr->enemyKilled) {
+		UpdateScore(1);
+		m_pEntityMngr->enemyKilled = false;
+	}
 }
+
+int Application::GetScore(void) {
+	return playerScore;
+}
+
+void Application::UpdateScore(int val) {
+	playerScore += val;
+}
+
 void Application::Display(void)
 {
 	// Clear the screen
@@ -270,6 +284,7 @@ void Application::Display(void)
 	//end the current frame (internally swaps the front and back buffers)
 	m_pWindow->display();
 }
+
 void Application::Release(void)
 {
 	//release the entity manager
