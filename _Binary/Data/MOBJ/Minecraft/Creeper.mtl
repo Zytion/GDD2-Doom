@@ -1,7 +1,12 @@
-newmtl MC_Creeper_SG
-illum 4
-Kd 0.00 0.00 0.00
-Ka 0.00 0.00 0.00
-Tf 1.00 1.00 1.00
-map_Kd DefCreeper1024.png
-Ni 1.00
+#
+#
+#
+
+newmtl  Mesh_Material.001
+illum 1
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ns 1.000000
+map_Kd spoopy.png
+
